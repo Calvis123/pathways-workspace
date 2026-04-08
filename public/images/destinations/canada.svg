@@ -1,0 +1,26 @@
+<svg width="1600" height="960" viewBox="0 0 1600 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="960" rx="48" fill="url(#bg)"/>
+  <circle cx="1248" cy="194" r="86" fill="#FFF0CC"/>
+  <path d="M0 704C172 618 335 623 518 708C684 786 833 814 1036 750C1210 695 1381 687 1600 764V960H0V704Z" fill="#5A1A1E"/>
+  <path d="M0 800C194 726 397 757 570 820C712 871 872 890 1066 834C1238 784 1410 775 1600 842V960H0V800Z" fill="#2F1014"/>
+  <path d="M223 575L322 378L420 575H223Z" fill="#F6D365"/>
+  <path d="M362 575L497 304L632 575H362Z" fill="#FFD56A"/>
+  <path d="M577 575L688 390L798 575H577Z" fill="#F6D365"/>
+  <rect x="878" y="208" width="256" height="352" rx="20" fill="#F8FAFC" fill-opacity="0.18"/>
+  <rect x="919" y="250" width="64" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.28"/>
+  <rect x="1012" y="250" width="64" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.22"/>
+  <rect x="919" y="346" width="64" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.22"/>
+  <rect x="1012" y="346" width="64" height="64" rx="12" fill="#FFFFFF" fill-opacity="0.28"/>
+  <rect x="1122" y="160" width="300" height="186" rx="28" fill="#FFFFFF" fill-opacity="0.1" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="2"/>
+  <text x="1154" y="220" fill="#FFF7ED" font-family="Arial, sans-serif" font-size="26" font-weight="700">Canada</text>
+  <text x="1154" y="264" fill="#FDE2E2" font-family="Arial, sans-serif" font-size="18">Top universities</text>
+  <text x="1154" y="298" fill="#FDE2E2" font-family="Arial, sans-serif" font-size="18">Inclusive cities</text>
+  <text x="1154" y="332" fill="#FDE2E2" font-family="Arial, sans-serif" font-size="18">Post-study pathways</text>
+  <defs>
+    <linearGradient id="bg" x1="145" y1="70" x2="1431" y2="890" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D64545"/>
+      <stop offset="0.58" stop-color="#9F1D2B"/>
+      <stop offset="1" stop-color="#23131A"/>
+    </linearGradient>
+  </defs>
+</svg>

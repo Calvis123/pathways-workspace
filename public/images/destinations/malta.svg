@@ -1,0 +1,22 @@
+<svg width="1600" height="960" viewBox="0 0 1600 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="960" rx="48" fill="url(#bg)"/>
+  <circle cx="1240" cy="188" r="90" fill="#FFE4A3"/>
+  <path d="M0 686C179 620 388 635 558 704C726 773 891 793 1085 732C1262 677 1427 685 1600 744V960H0V686Z" fill="#6B4226"/>
+  <path d="M0 786C175 724 390 754 578 816C740 870 919 874 1118 817C1274 773 1435 777 1600 828V960H0V786Z" fill="#3B2315"/>
+  <rect x="230" y="368" width="500" height="202" rx="24" fill="#F6E4BF" fill-opacity="0.78"/>
+  <rect x="282" y="318" width="86" height="252" rx="16" fill="#EED097"/>
+  <rect x="408" y="298" width="86" height="272" rx="16" fill="#EED097"/>
+  <rect x="534" y="338" width="86" height="232" rx="16" fill="#EED097"/>
+  <rect x="1112" y="168" width="294" height="184" rx="28" fill="#FFFFFF" fill-opacity="0.11" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="2"/>
+  <text x="1144" y="228" fill="#FFF7ED" font-family="Arial, sans-serif" font-size="26" font-weight="700">Malta</text>
+  <text x="1144" y="272" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="18">English-speaking pathway</text>
+  <text x="1144" y="306" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="18">Mediterranean lifestyle</text>
+  <text x="1144" y="340" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="18">Budget-friendly Europe</text>
+  <defs>
+    <linearGradient id="bg" x1="140" y1="76" x2="1464" y2="874" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D5A03D"/>
+      <stop offset="0.55" stop-color="#B06A14"/>
+      <stop offset="1" stop-color="#4A2B12"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,25 @@
+<svg width="1600" height="960" viewBox="0 0 1600 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="960" rx="48" fill="url(#bg)"/>
+  <circle cx="1290" cy="180" r="92" fill="#FFD56A" fill-opacity="0.95"/>
+  <path d="M0 720C180 640 350 660 520 734C650 791 800 825 1005 758C1178 702 1361 690 1600 778V960H0V720Z" fill="#17315D"/>
+  <path d="M0 784C178 704 366 738 553 804C701 857 873 877 1078 814C1246 763 1410 760 1600 827V960H0V784Z" fill="#0E223F"/>
+  <rect x="232" y="226" width="158" height="372" rx="14" fill="#F1F5F9" fill-opacity="0.18"/>
+  <rect x="426" y="152" width="130" height="446" rx="14" fill="#F1F5F9" fill-opacity="0.2"/>
+  <rect x="594" y="272" width="114" height="326" rx="14" fill="#F1F5F9" fill-opacity="0.15"/>
+  <rect x="742" y="190" width="140" height="408" rx="14" fill="#F1F5F9" fill-opacity="0.22"/>
+  <rect x="920" y="262" width="104" height="336" rx="14" fill="#F1F5F9" fill-opacity="0.14"/>
+  <path d="M489 140H494L507 598H476L489 140Z" fill="#FFD56A"/>
+  <path d="M436 204H548L492 120L436 204Z" fill="#FFD56A"/>
+  <rect x="1110" y="188" width="282" height="176" rx="28" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="2"/>
+  <text x="1142" y="248" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="26" font-weight="700">United Kingdom</text>
+  <text x="1142" y="292" fill="#DBEAFE" font-family="Arial, sans-serif" font-size="18">Historic campuses</text>
+  <text x="1142" y="326" fill="#DBEAFE" font-family="Arial, sans-serif" font-size="18">Global prestige</text>
+  <text x="1142" y="360" fill="#DBEAFE" font-family="Arial, sans-serif" font-size="18">Strong graduate routes</text>
+  <defs>
+    <linearGradient id="bg" x1="126" y1="62" x2="1458" y2="904" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A5CAA"/>
+      <stop offset="0.58" stop-color="#17396B"/>
+      <stop offset="1" stop-color="#091A33"/>
+    </linearGradient>
+  </defs>
+</svg>

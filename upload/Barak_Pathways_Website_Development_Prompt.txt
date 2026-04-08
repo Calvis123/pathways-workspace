@@ -1,0 +1,352 @@
+================================================================================
+                    BARAK PATHWAYS WEBSITE DEVELOPMENT
+                          AI DEVELOPER PROMPT v1.0
+================================================================================
+
+Copy and paste this entire prompt into your AI coding assistant (Claude,
+ChatGPT, Cursor, etc.) to implement the website improvements.
+
+================================================================================
+SECTION 1: PROJECT CONTEXT
+================================================================================
+
+You are working on the Barak Pathways website (https://barakpathways.com).
+
+BUSINESS: Study abroad consultancy based in Kenya
+TARGET: Students wanting to study in UK, Canada, Australia, Malta, Cyprus,
+         New Zealand, Spain
+
+PRICING MODEL:
+- Consultation: KES 40,000 (20k upfront, 20k after visa approval)
+- IELTS Training: KES 10,000
+- Commissions: KES 140,000 from institutions (6-12 months delayed)
+
+EXISTING ASSETS:
+- CRM System: /c/Users/USER/Downloads/crm/ (PHP/MySQL, 127+ files)
+- Booking Form: /c/Users/USER/Downloads/crm/book-consultation.php (WORKING)
+- Current Website: Next.js based at barakpathways.com
+- Admin Guide: /c/Users/USER/Downloads/crm/ADMIN-GUIDE.md
+
+BRAND COLORS:
+--primary-blue: #0066CC
+--primary-dark: #0052A3
+--accent-yellow: #FFD700
+--accent-orange: #FFA500
+
+WHATSAPP: +254113043315
+EMAIL: info@barakpathways.com
+CALENDLY: https://calendly.com/barakpathways/30min
+
+================================================================================
+SECTION 2: CURRENT ISSUES TO FIX
+================================================================================
+
+1. Website mentions "Working Overseas" but business is "Study Abroad"
+2. No clear connection between main website and booking form
+3. Missing student testimonials (they exist in booking form but not main site)
+4. No dedicated pages for countries, IELTS training, or process explanation
+5. Generic content doesn't convert visitors to bookings
+
+================================================================================
+SECTION 3: REQUIRED IMPLEMENTATION
+================================================================================
+
+PHASE 1 - CRITICAL URGENT FIXES (Do First)
+-------------------------------------------
+
+1. UPDATE HERO SECTION
+   - Change headline to: "Study in the UK, Canada, Australia, Malta & More"
+   - Subheadline: "Your seamless path to studying overseas"
+   - Add: "40+ students successfully placed in 2026"
+   - Add: "KES 40,000 consultation fee - pay 20k now, 20k after visa"
+   - CTA Button: "Book Free Consultation" → links to /crm/book-consultation.php
+
+2. ADD SUCCESS STORIES SECTION (immediately after hero)
+   Use these exact testimonials from the booking form:
+
+   "Barak Pathways helped me get into University of Derby. Now I'm earning
+   3.5M KES/year!"
+   — James, Eldoret
+
+   "Professional service. Got my UK visa in 1 month!"
+   — Mercy, Nairobi
+
+   "Best IELTS training I got 8 band"
+   — Brian, Mombasa
+
+3. ADD WHATSAPP FLOATING BUTTON
+   - Fixed position bottom-right
+   - WhatsApp icon
+   - Links to: https://wa.me/254113043315
+   - Text: "Chat on WhatsApp"
+
+4. CLEAR NAVIGATION UPDATES
+   - Add "Countries" dropdown
+   - Add "IELTS Training" link
+   - Add "How It Works" link
+   - Add "Student Portal" link
+   - Make "Book Consultation" prominent
+
+PHASE 2 - NEW PAGES TO CREATE
+------------------------------
+
+Create these new pages in the Next.js website:
+
+1. /countries PAGE (or /destinations)
+   Title: "Study Abroad Destinations"
+
+   Create a card for each country:
+   - United Kingdom
+   - Canada
+   - Australia
+   - Malta
+   - Cyprus
+   - Spain
+   - New Zealand
+
+   Each card should include:
+   - Country flag/image
+   - Popular universities (3-4 examples)
+   - Brief description
+   - "Learn More" button (can link to placeholder for now)
+
+2. /countries/[slug] PAGES (Individual country pages)
+   For each country, create a page with:
+   - Why study in [Country]?
+   - Popular Universities (with links)
+   - Visa Requirements
+   - Cost of Living (approximate)
+   - Available Scholarships
+   - Student Testimonials from that country
+   - CTA: "Book Consultation for [Country]"
+
+3. /ielts-training PAGE
+   Title: "IELTS Training - KES 10,000"
+
+   Include:
+   - About our IELTS program
+   - Trainer information (Jael)
+   - Success metrics: "Our students achieve Band 6-8"
+   - What's included:
+     * Practice tests
+     * Speaking practice
+     * Writing feedback
+     * Test strategies
+   - Schedule information
+   - CTA: "Enroll in IELTS Training" → links to booking form
+
+4. /how-it-works PAGE (or /process)
+   Title: "Your Journey to Studying Abroad"
+
+   Create a timeline/step-by-step:
+   Step 1: Free 15-minute consultation
+   Step 2: Pay KES 20,000 consultation fee
+   Step 3: We match you with universities & programs
+   Step 4: Application support & document preparation
+   Step 5: Visa application assistance
+   Step 6: Visa approved! Pay remaining KES 20,000
+   Step 7: Pre-departure orientation
+   Step 8: Fly to your dream destination!
+
+5. /scholarships PAGE
+   Title: "Scholarship Opportunities"
+
+   List scholarships by:
+   - Country
+   - Program level (undergraduate/postgraduate)
+   - Eligibility criteria
+   - Application deadlines
+
+6. /referral-program PAGE
+   Title: "Refer a Friend, Earn Rewards"
+
+   Content:
+   - Do you know someone who wants to study abroad?
+   - Refer them and earn KES 5,000 per successful referral
+   - How it works:
+     1. Share your unique referral code
+     2. Your friend books consultation
+     3. They pay consultation fee
+     4. You earn KES 5,000!
+   - CTA: "Get My Referral Code"
+
+PHASE 3 - ENHANCEMENTS
+-----------------------
+
+1. Add FAQ section to homepage with:
+   - How much does consultation cost?
+   - Which countries do you support?
+   - What's included in consultation?
+   - How long does visa processing take?
+   - Do you help with scholarships?
+
+2. Add "Recent Placements" ticker/carousel:
+   - Show photos/names of recently placed students
+   - University they placed at
+   - Country flag
+   - Scrolling animation
+
+3. Add Blog/Resources section:
+   - Create: /blog or /resources route
+   - Initial articles:
+     * "How to Choose the Right Country for Your Studies"
+     * "IELTS Tips: How to Score Band 7+"
+     * "UK Student Visa Requirements 2026"
+     * "Scholarships for Kenyan Students"
+
+4. Student Portal link:
+   - Add link to /portal or /student-portal
+   - This connects to existing CRM: student-portal.php
+
+================================================================================
+SECTION 4: DESIGN REQUIREMENTS
+================================================================================
+
+1. RESPONSIVE DESIGN
+   - Must work perfectly on mobile (most users will be on mobile)
+   - Test on: iPhone, Android, tablet
+
+2. LOADING SPEED
+   - Optimize images (use WebP format)
+   - Lazy load images below fold
+   - Minimize JavaScript bundle size
+
+3. ACCESSIBILITY
+   - Alt tags on all images
+   - Proper heading hierarchy (h1, h2, h3)
+   - Color contrast meets WCAG AA standards
+   - Keyboard navigation support
+
+4. SEO OPTIMIZATION
+   - Meta titles and descriptions for each page
+   - Open Graph tags for social sharing
+   - Structured data (JSON-LD)
+   - XML sitemap
+
+5. FONTS
+   - Primary: Inter or similar clean sans-serif
+   - Headings: Can use Playfair Display for elegance
+   - Body: 16px minimum, readable line length (60-75 chars)
+
+6. CONSISTENT BRANDING
+   - Use brand colors specified above
+   - Rounded corners: 12-16px for cards/buttons
+   - Shadows: Subtle, professional
+   - Spacing: Consistent 8px grid system
+
+================================================================================
+SECTION 5: INTEGRATIONS REQUIRED
+================================================================================
+
+1. GOOGLE ANALYTICS 4
+   - Track page views
+   - Track button clicks (CTAs)
+   - Track form submissions
+   - Set up conversion goals
+
+2. FACEBOOK PIXEL
+   - Track page views
+   - Track "Book Consultation" events
+   - Track lead submissions
+
+3. WHATSAPP INTEGRATION
+   - Floating button on all pages
+   - Pre-filled message: "Hi, I'm interested in studying abroad through Barak Pathways"
+
+4. CALENDLY (OPTIONAL)
+   - Embed booking widget on /how-it-works page
+   - Use: https://calendly.com/barakpathways/30min
+
+================================================================================
+SECTION 6: TECHNICAL NOTES
+================================================================================
+
+1. The booking form already exists at: /crm/book-consultation.php
+   DO NOT recreate this. Just link to it.
+
+2. The CRM has a student portal at: student-portal.php
+   Link to this from the main website navigation.
+
+3. The website is currently Next.js. Continue using Next.js App Router.
+
+4. Images should be stored in: /public/images or /public/assets
+
+5. For any new backend needs, you can use Next.js API routes
+
+6. The brand logo is at: /crm/assets/images/logo.png
+   Reference this for consistency.
+
+7. The consultation booking form uses these fields:
+   - Full Name
+   - Email
+   - WhatsApp Number (Kenyan format validation required)
+   - Location
+   - Country Interest
+   - Program Level
+   - Start Date
+
+================================================================================
+SECTION 7: DELIVERABLES CHECKLIST
+================================================================================
+
+After implementation, ensure:
+
+□ Hero section updated with correct messaging
+□ Success stories section added with 3 testimonials
+□ WhatsApp floating button on all pages
+□ Navigation updated with new links
+□ /countries page created with country cards
+□ /countries/[slug] pages for each destination (7 pages)
+□ /ielts-training page created
+□ /how-it-works page created with timeline
+□ /scholarships page created
+□ /referral-program page created
+□ FAQ section added to homepage
+□ Blog/resources section with initial articles
+□ Student portal link in navigation
+□ Mobile responsive (tested)
+□ GA4 tracking installed
+□ Facebook Pixel installed
+□ Meta tags for SEO on all pages
+□ Open Graph tags for social sharing
+□ XML sitemap generated
+□ Page load speed under 3 seconds
+
+================================================================================
+SECTION 8: TESTING CHECKLIST
+================================================================================
+
+Test the following before declaring complete:
+
+□ All navigation links work
+□ "Book Consultation" buttons link to /crm/book-consultation.php
+□ WhatsApp button opens WhatsApp with correct number
+□ Mobile menu works on smartphones
+□ All pages load without errors
+□ Forms (if any) submit successfully
+□ Google Analytics tracks page views (check Real-time report)
+□ Images load and display correctly
+□ No console errors in browser
+□ Links to external sites open in new tabs where appropriate
+□ Social sharing previews work (test on Facebook, Twitter, LinkedIn)
+
+================================================================================
+SECTION 9: CONTACT FOR QUESTIONS
+================================================================================
+
+If you need clarification on:
+- Business logic: Contact Allan at Barak Pathways
+- Technical requirements: Review the CRM files at /c/Users/USER/Downloads/crm/
+- Design preferences: Reference existing CRM dashboard at /crm/index.php
+
+================================================================================
+END OF PROMPT
+================================================================================
+
+NOTE TO DEVELOPER:
+This is a phased approach. Complete Phase 1 first (critical fixes), then
+move to Phase 2 (new pages), then Phase 3 (enhancements). Test thoroughly
+at each phase before proceeding to the next.
+
+Last updated: April 2026
+Version: 1.0

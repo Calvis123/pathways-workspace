@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Menu, Phone, ChevronDown, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -26,20 +26,32 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileDestinationsOpen, setMobileDestinationsOpen] = useState(false);
+  const mobileOpenRef = useRef(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 16);
+    mobileOpenRef.current = mobileOpen;
+  }, [mobileOpen]);
 
-      if (mobileOpen) {
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      setScrolled(currentScrollY > 16);
+
+      if (mobileOpenRef.current && Math.abs(currentScrollY - lastScrollY) > 4) {
         setMobileOpen(false);
+        setMobileDestinationsOpen(false);
       }
+
+      lastScrollY = currentScrollY;
     };
 
     onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
-  }, [mobileOpen]);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50">

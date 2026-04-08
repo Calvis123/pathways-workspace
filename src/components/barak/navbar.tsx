@@ -128,7 +128,9 @@ export function Navbar() {
 
           <div className="flex items-center gap-3">
             <Link
-              href="/contact-us"
+              href="https://pathways-crm.vercel.app/book-consultation"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden h-11 items-center rounded-full bg-[linear-gradient(135deg,#ffcf33_0%,#f4bb17_100%)] px-5 text-sm font-semibold text-slate-950 shadow-[0_14px_34px_rgba(255,207,51,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(255,207,51,0.28)] sm:inline-flex"
             >
               <Phone className="mr-2 h-4 w-4" />
@@ -232,7 +234,9 @@ export function Navbar() {
                   </div>
 
                   <Link
-                    href="/contact-us"
+                    href="https://pathways-crm.vercel.app/book-consultation"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
                     className="mt-5 inline-flex h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#0f3a78_0%,#1d5db6_100%)] px-5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(15,58,120,0.18)]"
                   >

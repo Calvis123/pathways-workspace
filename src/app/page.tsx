@@ -199,7 +199,9 @@ export default function Home() {
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Link
-                  href="#contact"
+                  href="https://pathways-crm.vercel.app/book-consultation"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex h-13 items-center justify-center rounded-full bg-[#ffcf33] px-7 text-base font-semibold text-slate-950 shadow-[0_18px_40px_rgba(255,207,51,0.22)] transition hover:-translate-y-0.5 hover:bg-[#f3be0b]"
                 >
                   Book free consultation

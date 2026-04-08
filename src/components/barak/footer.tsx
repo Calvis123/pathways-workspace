@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, Mail, Phone } from 'lucide-react';
+import { Calendar, Facebook, Instagram, Mail, Phone } from 'lucide-react';
 
 const studyLinks = [
   { label: 'Explore destinations', href: '/#destinations' },
@@ -17,6 +17,37 @@ const serviceLinks = [
   'IELTS preparation',
   'Visa support',
 ];
+
+const socialLinks = [
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/barak_pathways_global?igsh=MThiazVlbXZtOHVyZA==',
+    Icon: Instagram,
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/share/1CaG9GpDRo/',
+    Icon: Facebook,
+  },
+  {
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@barak_pathways?_r=1&_t=ZS-95N105CusgZ',
+    Icon: TikTokIcon,
+  },
+];
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M16.37 2H13.6v11.15a2.31 2.31 0 1 1-2.31-2.31c.2 0 .4.03.59.08V8.1a5.1 5.1 0 0 0-.59-.03 5.08 5.08 0 1 0 5.08 5.08V7.5c1.1.79 2.44 1.25 3.88 1.25V5.98A4.4 4.4 0 0 1 16.37 2Z" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -41,7 +72,9 @@ export function Footer() {
             </div>
 
             <Link
-              href="/contact-us"
+              href="https://pathways-crm.vercel.app/book-consultation"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffcf33_0%,#f4bb17_100%)] px-6 text-sm font-semibold text-slate-950 shadow-[0_14px_34px_rgba(255,207,51,0.22)] transition hover:-translate-y-0.5 hover:bg-[#f3be0b]"
             >
               Book consultation
@@ -66,6 +99,26 @@ export function Footer() {
             <p className="mt-5 max-w-md text-sm leading-7 text-white/70">
               Guidance for Kenyan students exploring the UK, Canada, Australia, Malta, Cyprus, Spain and New Zealand, with support spanning applications, IELTS and visa readiness.
             </p>
+
+            <div className="mt-6">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
+                Follow us
+              </div>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {socialLinks.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/6 text-white/80 shadow-[0_10px_24px_rgba(2,12,27,0.16)] transition hover:-translate-y-0.5 hover:border-[#ffcf33]/40 hover:bg-white/12 hover:text-[#ffcf33]"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div>
@@ -110,13 +163,13 @@ export function Footer() {
                 info@barakpathways.com
               </a>
               <a
-                href="https://calendly.com/barakpathways/30min"
+                href="https://pathways-crm.vercel.app/book-consultation"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 transition hover:text-white"
               >
                 <Calendar className="h-4 w-4 text-[#ffcf33]" />
-                Book on Calendly
+                Book consultation
               </a>
             </div>
 

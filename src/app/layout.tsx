@@ -88,7 +88,7 @@ export default function RootLayout({
               },
               sameAs: [
                 "https://wa.me/254113043315",
-                "https://calendly.com/barakpathways/30min",
+                "https://pathways-crm.vercel.app/book-consultation",
               ],
             }),
           }}

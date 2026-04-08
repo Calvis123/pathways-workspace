@@ -238,7 +238,9 @@ export default function AboutUsPage() {
 
                 <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                   <Link
-                    href="/contact-us"
+                    href="https://pathways-crm.vercel.app/book-consultation"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex h-12 items-center justify-center rounded-full bg-[#0f3a78] px-6 text-sm font-semibold text-white transition hover:bg-[#0b2b5c]"
                   >
                     Book free consultation

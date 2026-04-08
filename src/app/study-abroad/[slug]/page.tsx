@@ -189,7 +189,9 @@ export default async function DestinationPage({ params }: PageProps) {
 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                   <Link
-                    href="#contact"
+                    href="https://pathways-crm.vercel.app/book-consultation"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold text-white shadow-[0_16px_38px_rgba(15,58,120,0.18)] transition hover:-translate-y-0.5 ${detail.accentBg}`}
                   >
                     Book free consultation
@@ -834,7 +836,9 @@ export default async function DestinationPage({ params }: PageProps) {
 
                 <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                   <Link
-                    href="#contact"
+                    href="https://pathways-crm.vercel.app/book-consultation"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex h-12 items-center justify-center rounded-full bg-[#ffcf33] px-6 text-sm font-semibold text-slate-950 shadow-[0_16px_38px_rgba(255,207,51,0.22)] transition hover:-translate-y-0.5 hover:bg-[#f1c11b]"
                   >
                     Book free consultation

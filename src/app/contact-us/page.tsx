@@ -10,6 +10,7 @@ import {
   Phone,
   ShieldCheck,
 } from 'lucide-react';
+import { ContactInquiryForm } from '@/components/barak/contact-inquiry-form';
 import { Footer } from '@/components/barak/footer';
 import { Navbar } from '@/components/barak/navbar';
 import { WhatsAppButton } from '@/components/barak/whatsapp-button';
@@ -138,8 +139,9 @@ export default function ContactUsPage() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link
-                    href="https://calendly.com/barakpathways/30min"
+                    href="https://pathways-crm.vercel.app/book-consultation"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex h-12 items-center justify-center rounded-full border border-[#d4dce8] bg-white px-6 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
                   >
                     Book free counselling
@@ -201,6 +203,42 @@ export default function ContactUsPage() {
                   </article>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[linear-gradient(180deg,#f8fbff_0%,#ffffff_100%)] py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#dce6f4] bg-white px-4 py-2 text-sm font-medium text-[#0f3a78] shadow-sm">
+                  <Mail className="h-4 w-4" />
+                  Lead capture
+                </div>
+                <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+                  Prefer to send your details in one place?
+                </h2>
+                <p className="mt-5 max-w-xl text-base leading-8 text-slate-600">
+                  Use the inquiry form to share your name, email, phone number and message. It&apos;s a simple way to package your interest before we continue the conversation.
+                </p>
+
+                <div className="mt-8 grid gap-4">
+                  {[
+                    'Useful for course, destination and visa-related questions',
+                    'Helps you send a more complete first inquiry',
+                    'Works well for students who want structured follow-up',
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-[#dde6f4] bg-white px-5 py-4 text-sm font-medium text-slate-700 shadow-[0_12px_30px_rgba(15,58,120,0.05)]"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <ContactInquiryForm />
             </div>
           </div>
         </section>
@@ -286,8 +324,9 @@ export default function ContactUsPage() {
                     WhatsApp us
                   </Link>
                   <Link
-                    href="https://calendly.com/barakpathways/30min"
+                    href="https://pathways-crm.vercel.app/book-consultation"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex h-12 items-center justify-center rounded-full border border-white/18 bg-white/10 px-6 text-sm font-semibold text-white transition hover:bg-white/15"
                   >
                     Book free counselling

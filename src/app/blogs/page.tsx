@@ -112,10 +112,10 @@ export default function BlogsPage() {
                           {post.date}
                         </span>
                         <Link
-                          href="/contact-us"
+                          href={`/blogs/${post.slug}`}
                           className="font-semibold text-[#1d6ef2] transition hover:text-[#0f3a78]"
                         >
-                          Read More →
+                          Read more →
                         </Link>
                       </div>
                     </div>

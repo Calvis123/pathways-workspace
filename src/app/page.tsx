@@ -598,6 +598,13 @@ export default function Home() {
                     <span>{post.readTime}</span>
                     <span>{post.date}</span>
                   </div>
+                  <Link
+                    href={`/blogs/${post.slug}`}
+                    className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-[#dbe5f5] bg-[#eef4ff] px-4 py-2 text-sm font-semibold text-[#0f3a78] transition hover:bg-white"
+                  >
+                    Read more
+                    <Icon icon={arrowForwardOutline} className="h-4 w-4" />
+                  </Link>
                 </article>
               ))}
             </div>

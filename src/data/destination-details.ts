@@ -59,10 +59,10 @@ export const destinationDetails: Record<string, DestinationDetail> = {
       'Submit your application and accept your offer.',
       'Receive your CAS, prepare funds and apply for your student visa.',
     ],
-    heroGradient: 'bg-[linear-gradient(135deg,#123e7a_0%,#0f2c58_55%,#071a33_100%)]',
+    heroGradient: 'bg-[linear-gradient(135deg,#123e7a_0%,#0f2c58_55%,#05263d_100%)]',
     softAccent: 'bg-[#e9f0fb]',
-    accentText: 'text-[#0f3a78]',
-    accentBg: 'bg-[#0f3a78]',
+    accentText: 'text-[#1f62e4]',
+    accentBg: 'bg-[#1f62e4]',
     facts: ['Shorter degree timelines', 'Strong global prestige', 'Wide scholarship awareness'],
     popularCourses: ['Business', 'Law', 'Computer Science', 'Public Health', 'Engineering'],
     overviewParagraphs: [
@@ -652,3 +652,4 @@ export const destinationDetails: Record<string, DestinationDetail> = {
     ],
   },
 };
+

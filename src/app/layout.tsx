@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "IELTS training Kenya",
     "student visa",
     "university application",
-    "scholarships",
+    "study guidance",
   ],
   authors: [{ name: "Barak Pathways" }],
   alternates: {
@@ -101,3 +101,4 @@ export default function RootLayout({
     </html>
   );
 }
+

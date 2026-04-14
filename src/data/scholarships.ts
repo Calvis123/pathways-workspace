@@ -89,3 +89,4 @@ export const scholarships: Scholarship[] = [
     deadline: "May annually",
   },
 ];
+

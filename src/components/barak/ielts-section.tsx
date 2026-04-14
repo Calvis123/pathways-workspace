@@ -54,7 +54,7 @@ export function IELTSSection() {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-12">
           <Badge className="bg-brand-yellow/20 text-brand-yellow border-brand-yellow/30 mb-4">IELTS Preparation</Badge>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">IELTS Training</h2>
-          <p className="text-white/70 max-w-xl mx-auto">Achieve your target band score with expert training from just KES 10,000</p>
+          <p className="text-white/70 max-w-xl mx-auto">Achieve your target band score with structured expert training.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -73,8 +73,8 @@ export function IELTSSection() {
               <div className="flex items-center gap-3 mb-2">
                 <Target className="w-10 h-10 text-brand-yellow" />
                 <div>
-                  <p className="text-white font-bold text-2xl">KES 10,000</p>
-                  <p className="text-white/60 text-sm">Complete IELTS Training Program</p>
+                  <p className="text-white font-bold text-2xl">IELTS Focus Plan</p>
+                  <p className="text-white/60 text-sm">Complete preparation support</p>
                 </div>
               </div>
             </div>
@@ -116,3 +116,4 @@ export function IELTSSection() {
     </section>
   );
 }
+

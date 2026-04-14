@@ -11,7 +11,7 @@ import { destinationDetails } from '@/data/destination-details';
 export const metadata: Metadata = {
   title: 'Blogs | Barak Pathways',
   description:
-    'Read Barak Pathways blog articles on study abroad planning, IELTS preparation, scholarships and visa guidance for Kenyan students.',
+    'Read Barak Pathways blog articles on study abroad planning, IELTS preparation and visa guidance for Kenyan students.',
   alternates: {
     canonical: '/blogs',
   },
@@ -37,8 +37,10 @@ const articleVisuals = [
 ];
 
 export default function BlogsPage() {
+  const visiblePosts = blogPosts.filter((post) => post.slug !== 'scholarships-for-kenyan-students');
+
   return (
-    <div className="min-h-screen bg-[linear-gradient(180deg,#f6f8fc_0%,#ffffff_24%,#f7faff_100%)] text-slate-900">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#f6f8fc_0%,#ffffff_24%,#f4f8fb_100%)] text-slate-900">
       <Navbar />
 
       <main>
@@ -53,7 +55,7 @@ export default function BlogsPage() {
             </div>
 
             <div className="mt-6 max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#d8e3f6] bg-[#f7faff] px-4 py-2 text-sm font-medium text-[#0f3a78]">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#cddbf7] bg-[#f4f8fb] px-4 py-2 text-sm font-medium text-[#1f62e4]">
                 <Newspaper className="h-4 w-4" />
                 Blog articles
               </div>
@@ -61,7 +63,7 @@ export default function BlogsPage() {
                 Helpful reads for students planning to study abroad
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-                Explore practical articles on study destinations, admissions, IELTS, scholarships and the decisions students usually need to make before applying.
+                Explore practical articles on study destinations, admissions, IELTS and the decisions students usually need to make before applying.
               </p>
             </div>
           </div>
@@ -70,13 +72,13 @@ export default function BlogsPage() {
         <section className="py-14 sm:py-18">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-              {blogPosts.map((post, index) => {
+              {visiblePosts.map((post, index) => {
                 const visual = articleVisuals[index % articleVisuals.length];
 
                 return (
                   <article
                     key={post.slug}
-                    className="flex h-full flex-col overflow-hidden rounded-[16px] border border-[#e3e8f1] bg-white shadow-[0_10px_28px_rgba(15,58,120,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(15,58,120,0.12)]"
+                    className="flex h-full flex-col overflow-hidden rounded-[16px] border border-[#e3e8f1] bg-white shadow-[0_10px_28px_rgba(31,98,228,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(31,98,228,0.12)]"
                   >
                     <div className="relative h-[220px] overflow-hidden">
                       <Image
@@ -91,7 +93,7 @@ export default function BlogsPage() {
 
                     <div className="flex flex-1 flex-col p-6 text-center sm:p-7">
                       <div className="flex justify-center">
-                        <div className="inline-flex rounded-full bg-[#1d6ef2] px-4 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-sm">
+                        <div className="inline-flex rounded-full bg-[#4f8ff0] px-4 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-sm">
                           {post.category}
                         </div>
                       </div>
@@ -113,7 +115,7 @@ export default function BlogsPage() {
                         </span>
                         <Link
                           href={`/blogs/${post.slug}`}
-                          className="font-semibold text-[#1d6ef2] transition hover:text-[#0f3a78]"
+                          className="font-semibold text-[#4f8ff0] transition hover:text-[#1f62e4]"
                         >
                           Read more →
                         </Link>
@@ -132,3 +134,4 @@ export default function BlogsPage() {
     </div>
   );
 }
+

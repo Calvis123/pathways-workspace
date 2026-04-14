@@ -5,9 +5,9 @@ export interface FAQ {
 
 export const faqs: FAQ[] = [
   {
-    question: "How much does consultation cost?",
+    question: "How do I get started?",
     answer:
-      "Our consultation fee is KES 40,000 total. You pay KES 20,000 upfront when you start, and the remaining KES 20,000 is paid after your visa is approved. This makes it risk-free for you!",
+      "Start by booking a consultation. We review your goals, shortlist suitable destinations, and guide you on the next steps in a clear sequence.",
   },
   {
     question: "Which countries do you support?",
@@ -17,7 +17,7 @@ export const faqs: FAQ[] = [
   {
     question: "What's included in the consultation?",
     answer:
-      "Our consultation includes university matching and program selection, application support and document preparation, visa application assistance, scholarship guidance, and pre-departure orientation. We guide you every step of the way.",
+      "Our consultation includes university matching and program selection, application support and document preparation, visa application assistance, and pre-departure orientation. We guide you every step of the way.",
   },
   {
     question: "How long does visa processing take?",
@@ -25,14 +25,9 @@ export const faqs: FAQ[] = [
       "Visa processing times vary by country. The UK typically takes 3-6 weeks, Canada 4-8 weeks, Australia 4-6 weeks, and European countries like Malta and Cyprus 2-4 weeks. We help you prepare all documents to ensure a smooth process.",
   },
   {
-    question: "Do you help with scholarships?",
-    answer:
-      "Yes! We actively help you identify and apply for scholarships that match your profile. Many of our students have secured partial or full scholarships to help fund their studies abroad.",
-  },
-  {
     question: "What is the IELTS training like?",
     answer:
-      "Our IELTS training program costs KES 10,000 and includes comprehensive practice tests, one-on-one speaking practice, detailed writing feedback, proven test strategies, and flexible scheduling. Our students consistently achieve Band 6-8 scores.",
+      "Our IELTS training includes comprehensive practice tests, one-on-one speaking practice, detailed writing feedback, proven test strategies, and flexible scheduling. Our students consistently achieve Band 6-8 scores.",
   },
   {
     question: "Can I work while studying abroad?",
@@ -45,3 +40,4 @@ export const faqs: FAQ[] = [
       "While our success rate is very high, if your visa is unfortunately rejected, we work with you to understand the reasons and help you reapply. We also provide guidance on alternative destinations and programs that might be a better fit.",
   },
 ];
+

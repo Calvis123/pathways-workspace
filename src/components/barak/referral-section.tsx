@@ -8,8 +8,8 @@ import { Gift, Share2, ClipboardList, CreditCard, DollarSign, ArrowRight } from 
 const steps = [
   { icon: Share2, title: 'Share your code', desc: 'Share your unique referral code with friends' },
   { icon: ClipboardList, title: 'Friend books', desc: 'Your friend books a consultation' },
-  { icon: CreditCard, title: 'They pay', desc: 'They pay the consultation fee' },
-  { icon: DollarSign, title: 'You earn', desc: 'You earn KES 5,000!' },
+  { icon: CreditCard, title: 'They book', desc: 'They book a consultation' },
+  { icon: DollarSign, title: 'You earn', desc: 'You receive a referral reward' },
 ];
 
 export function ReferralSection() {
@@ -52,7 +52,7 @@ export function ReferralSection() {
               {"\uD83D\uDCB0"}
             </span>
             <h3 className="text-3xl font-bold text-brand-dark mb-2">
-              Earn KES 5,000
+              Earn Referral Rewards
             </h3>
             <p className="text-brand-dark/70 text-lg">
               Per successful referral
@@ -98,3 +98,4 @@ export function ReferralSection() {
     </section>
   );
 }
+

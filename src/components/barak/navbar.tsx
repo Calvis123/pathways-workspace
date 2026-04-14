@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { countries } from '@/data/countries';
 import { getDestinationPath } from '@/lib/destination-utils';
+import { ConsultationPopupTrigger } from '@/components/barak/consultation-popup-trigger';
 
 const navLinks = [
   { label: 'Study destinations', href: '/#destinations', dropdown: true },
@@ -55,7 +56,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="hidden border-b border-white/10 bg-[linear-gradient(90deg,#071a33_0%,#0f3a78_55%,#174c97_100%)] text-white lg:block">
+      <div className="hidden border-b border-white/10 bg-[linear-gradient(90deg,#05263d_0%,#1f62e4_55%,#4f8ff0_100%)] text-white lg:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2.5 text-sm lg:px-8">
           <div className="flex items-center gap-6 text-white/80">
             <Link href="/blogs" className="transition hover:text-white">
@@ -75,7 +76,7 @@ export function Navbar() {
       <div
         className={`border-b transition-all ${
           scrolled
-            ? 'border-[#dce6f4] bg-white/88 shadow-[0_10px_30px_rgba(15,58,120,0.08)] backdrop-blur-xl'
+            ? 'border-[#cddbf7] bg-white/88 shadow-[0_10px_30px_rgba(31,98,228,0.08)] backdrop-blur-xl'
             : 'border-transparent bg-white/78 backdrop-blur-xl'
         }`}
       >
@@ -98,12 +99,12 @@ export function Navbar() {
               link.dropdown ? (
                 <DropdownMenu key={link.label}>
                   <DropdownMenuTrigger asChild>
-                    <button className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-[#eef4ff] hover:text-[#0f3a78]">
+                    <button className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-[#eef2f8] hover:text-[#1f62e4]">
                       {link.label}
                       <ChevronDown className="h-4 w-4" />
                     </button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="center" className="w-64 rounded-2xl border border-[#dbe5f5] p-2 shadow-[0_18px_45px_rgba(15,58,120,0.12)]">
+                  <DropdownMenuContent align="center" className="w-64 rounded-2xl border border-[#cddbf7] p-2 shadow-[0_18px_45px_rgba(31,98,228,0.12)]">
                     {countries.map((country) => (
                       <DropdownMenuItem key={country.slug} asChild>
                         <Link href={getDestinationPath(country.slug)} className="cursor-pointer rounded-xl">
@@ -118,7 +119,7 @@ export function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="rounded-full px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-[#eef4ff] hover:text-[#0f3a78]"
+                  className="rounded-full px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-[#eef2f8] hover:text-[#1f62e4]"
                 >
                   {link.label}
                 </Link>
@@ -127,15 +128,10 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="https://pathways-crm.vercel.app/book-consultation"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden h-11 items-center rounded-full bg-[linear-gradient(135deg,#ffcf33_0%,#f4bb17_100%)] px-5 text-sm font-semibold text-slate-950 shadow-[0_14px_34px_rgba(255,207,51,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(255,207,51,0.28)] sm:inline-flex"
-            >
-              <Phone className="mr-2 h-4 w-4" />
-              Book consultation
-            </Link>
+            <ConsultationPopupTrigger
+              label="Start your Journey"
+              className="hidden h-11 items-center rounded-full bg-[linear-gradient(135deg,#eef1f5_0%,#dde5ef_100%)] px-5 text-sm font-semibold text-slate-950 shadow-[0_14px_34px_rgba(79,143,240,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(79,143,240,0.28)] sm:inline-flex"
+            />
 
             <Sheet
               open={mobileOpen}
@@ -151,7 +147,7 @@ export function Navbar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-full border border-[#dbe6f5] bg-white/90 shadow-[0_10px_24px_rgba(15,58,120,0.08)] lg:hidden"
+                  className="rounded-full border border-[#dbe6f5] bg-white/90 shadow-[0_10px_24px_rgba(31,98,228,0.08)] lg:hidden"
                 >
                   <Menu className="h-6 w-6 text-slate-800" />
                 </Button>
@@ -159,11 +155,11 @@ export function Navbar() {
 
               <SheetContent
                 side="right"
-                className="w-80 border-l border-[#dde6f4] bg-[linear-gradient(180deg,#ffffff_0%,#f7faff_55%,#eef4ff_100%)] px-0"
+                className="w-80 border-l border-[#cddbf7] bg-[linear-gradient(180deg,#ffffff_0%,#f4f8fb_55%,#eef2f8_100%)] px-0"
               >
                 <SheetTitle className="sr-only">Main navigation</SheetTitle>
                 <div className="mt-10 flex h-full flex-col overflow-y-auto px-5 pb-6">
-                  <div className="rounded-[28px] border border-[#d9e5f7] bg-[linear-gradient(135deg,#0f3a78_0%,#1d5db6_65%,#2d74d1_100%)] p-5 text-white shadow-[0_18px_45px_rgba(15,58,120,0.22)]">
+                  <div className="rounded-[28px] border border-[#cddbf7] bg-[linear-gradient(135deg,#1f62e4_0%,#4f8ff0_65%,#6fa5ff_100%)] p-5 text-white shadow-[0_18px_45px_rgba(31,98,228,0.22)]">
                     <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/85">
                       <Sparkles className="h-3.5 w-3.5" />
                       Student pathway
@@ -174,17 +170,17 @@ export function Navbar() {
                     </p>
                   </div>
 
-                  <div className="mt-5 rounded-[28px] border border-[#dbe6f5] bg-white/90 p-3 shadow-[0_14px_35px_rgba(15,58,120,0.06)] backdrop-blur">
+                  <div className="mt-5 rounded-[28px] border border-[#dbe6f5] bg-white/90 p-3 shadow-[0_14px_35px_rgba(31,98,228,0.06)] backdrop-blur">
                     <button
                       type="button"
                       onClick={() => setMobileDestinationsOpen((open) => !open)}
-                      className="flex w-full items-center justify-between rounded-[22px] px-4 py-3 text-left transition hover:bg-[#f6f9ff]"
+                      className="flex w-full items-center justify-between rounded-[22px] px-4 py-3 text-left transition hover:bg-[#eef5f9]"
                     >
                       <div>
                         <div className="text-sm font-semibold text-slate-900">Study destinations</div>
                         <div className="mt-1 text-xs text-slate-500">Browse countries we support</div>
                       </div>
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#eef4ff] text-[#0f3a78]">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#eef2f8] text-[#1f62e4]">
                         <ChevronDown
                           className={`h-5 w-5 transition-transform duration-200 ${
                             mobileDestinationsOpen ? 'rotate-180' : ''
@@ -200,7 +196,7 @@ export function Navbar() {
                             key={country.slug}
                             href={getDestinationPath(country.slug)}
                             onClick={() => setMobileOpen(false)}
-                            className="flex items-center justify-between rounded-2xl border border-transparent bg-[#f8fbff] px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-[#d9e5f7] hover:bg-white hover:text-[#0f3a78]"
+                            className="flex items-center justify-between rounded-2xl border border-transparent bg-[#f4f8fb] px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-[#cddbf7] hover:bg-white hover:text-[#1f62e4]"
                           >
                             <span className="flex items-center gap-3">
                               <span className="text-base">{country.flag}</span>
@@ -215,7 +211,7 @@ export function Navbar() {
                     ) : null}
                   </div>
 
-                  <div className="mt-4 rounded-[28px] border border-[#dbe6f5] bg-white/90 p-3 shadow-[0_14px_35px_rgba(15,58,120,0.06)] backdrop-blur">
+                  <div className="mt-4 rounded-[28px] border border-[#dbe6f5] bg-white/90 p-3 shadow-[0_14px_35px_rgba(31,98,228,0.06)] backdrop-blur">
                     {navLinks
                       .filter((link) => !link.dropdown)
                       .map((link) => (
@@ -223,7 +219,7 @@ export function Navbar() {
                           key={link.label}
                           href={link.href}
                           onClick={() => setMobileOpen(false)}
-                          className="flex items-center justify-between rounded-[20px] px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:bg-[#f6f9ff] hover:text-[#0f3a78]"
+                          className="flex items-center justify-between rounded-[20px] px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:bg-[#eef5f9] hover:text-[#1f62e4]"
                         >
                           <span>{link.label}</span>
                           <span className="text-xs uppercase tracking-[0.18em] text-slate-400">
@@ -233,16 +229,10 @@ export function Navbar() {
                       ))}
                   </div>
 
-                  <Link
-                    href="https://pathways-crm.vercel.app/book-consultation"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setMobileOpen(false)}
-                    className="mt-5 inline-flex h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#0f3a78_0%,#1d5db6_100%)] px-5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(15,58,120,0.18)]"
-                  >
-                    <Phone className="mr-2 h-4 w-4" />
-                    Book consultation
-                  </Link>
+                  <ConsultationPopupTrigger
+                    label="Start your Journey"
+                    className="mt-5 inline-flex h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1f62e4_0%,#4f8ff0_100%)] px-5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(31,98,228,0.18)]"
+                  />
 
                   <p className="mt-3 text-center text-xs leading-5 text-slate-500">
                     The menu closes automatically as soon as you continue scrolling.
@@ -256,3 +246,4 @@ export function Navbar() {
     </header>
   );
 }
+

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Facebook, Instagram, Mail, Phone } from 'lucide-react';
+import { ConsultationPopupTrigger } from '@/components/barak/consultation-popup-trigger';
 
 const studyLinks = [
   { label: 'Explore destinations', href: '/#destinations' },
@@ -13,7 +14,7 @@ const studyLinks = [
 
 const serviceLinks = [
   'University matching',
-  'Scholarship guidance',
+  'Application guidance',
   'IELTS preparation',
   'Visa support',
 ];
@@ -51,10 +52,10 @@ function TikTokIcon({ className }: { className?: string }) {
 
 export function Footer() {
   return (
-    <footer id="contact" className="relative overflow-hidden bg-[#071a33] text-white">
-      <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top_left,rgba(255,207,51,0.14),transparent_26%),radial-gradient(circle_at_top_right,rgba(56,189,248,0.12),transparent_28%)]" />
+    <footer id="contact" className="relative overflow-hidden bg-[linear-gradient(145deg,#0f4ccf_0%,#1f62e4_52%,#0a3da8_100%)] text-white">
+      <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top_left,rgba(255,224,130,0.24),transparent_30%),radial-gradient(circle_at_top_right,rgba(56,189,248,0.14),transparent_28%)]" />
       <div className="absolute -left-16 top-10 h-48 w-48 rounded-full bg-white/5 blur-3xl" />
-      <div className="absolute right-0 top-0 h-56 w-56 rounded-full bg-[#1d5db6]/20 blur-3xl" />
+      <div className="absolute right-0 top-0 h-56 w-56 rounded-full bg-[#ffcf33]/20 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="mb-10 rounded-[32px] border border-white/10 bg-white/5 px-6 py-6 backdrop-blur sm:px-8">
@@ -71,14 +72,10 @@ export function Footer() {
               </p>
             </div>
 
-            <Link
-              href="https://pathways-crm.vercel.app/book-consultation"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffcf33_0%,#f4bb17_100%)] px-6 text-sm font-semibold text-slate-950 shadow-[0_14px_34px_rgba(255,207,51,0.22)] transition hover:-translate-y-0.5 hover:bg-[#f3be0b]"
-            >
-              Book consultation
-            </Link>
+            <ConsultationPopupTrigger
+              label="Start Your Journey"
+              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#eef1f5_0%,#dde5ef_100%)] px-6 text-sm font-semibold text-slate-950 shadow-[0_14px_34px_rgba(79,143,240,0.22)] transition hover:-translate-y-0.5 hover:bg-[#dde5ef] sm:w-auto"
+            />
           </div>
         </div>
 
@@ -112,7 +109,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/6 text-white/80 shadow-[0_10px_24px_rgba(2,12,27,0.16)] transition hover:-translate-y-0.5 hover:border-[#ffcf33]/40 hover:bg-white/12 hover:text-[#ffcf33]"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/6 text-white/80 shadow-[0_10px_24px_rgba(2,12,27,0.16)] transition hover:-translate-y-0.5 hover:border-[#eef1f5]/40 hover:bg-white/12 hover:text-[#eef1f5]"
                   >
                     <Icon className="h-5 w-5" />
                   </a>
@@ -152,33 +149,34 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 transition hover:text-white"
               >
-                <Phone className="h-4 w-4 text-[#ffcf33]" />
+                <Phone className="h-4 w-4 text-[#eef1f5]" />
                 +254 113 043 315
               </a>
               <a
                 href="mailto:info@barakpathways.com"
                 className="flex items-center gap-3 transition hover:text-white"
               >
-                <Mail className="h-4 w-4 text-[#ffcf33]" />
+                <Mail className="h-4 w-4 text-[#eef1f5]" />
                 info@barakpathways.com
               </a>
-              <a
-                href="https://pathways-crm.vercel.app/book-consultation"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 transition hover:text-white"
-              >
-                <Calendar className="h-4 w-4 text-[#ffcf33]" />
-                Book consultation
-              </a>
+              <div className="flex items-center gap-3">
+                <Calendar className="h-4 w-4 text-[#eef1f5]" />
+                <Link
+                  href="https://wa.me/254113043315?text=Hi%2C%20I%27d%20like%20to%20start%20my%20journey%20with%20Barak%20Pathways"
+                  target="_blank"
+                  className="transition hover:text-white"
+                >
+                  WhatsApp
+                </Link>
+              </div>
             </div>
 
             <Link
               href="https://wa.me/254113043315?text=Hi%2C%20I%27m%20interested%20in%20studying%20abroad%20through%20Barak%20Pathways"
               target="_blank"
-              className="mt-6 inline-flex h-12 items-center justify-center rounded-full bg-[#ffcf33] px-6 text-sm font-semibold text-slate-950 transition hover:bg-[#f3be0b]"
+              className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-full bg-[#eef1f5] px-6 text-sm font-semibold text-slate-950 transition hover:bg-[#dde5ef] sm:w-auto"
             >
-              Start your journey
+              WhatsApp
             </Link>
           </div>
         </div>
@@ -190,3 +188,4 @@ export function Footer() {
     </footer>
   );
 }
+

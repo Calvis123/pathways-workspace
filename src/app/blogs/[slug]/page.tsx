@@ -15,15 +15,24 @@ type BlogPostPageProps = {
 };
 
 function getPost(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
+  return blogPosts.find(
+    (post) => post.slug === slug && post.slug !== 'scholarships-for-kenyan-students'
+  );
 }
 
 function getRelatedPosts(currentSlug: string) {
-  return blogPosts.filter((post) => post.slug !== currentSlug).slice(0, 3);
+  return blogPosts
+    .filter(
+      (post) =>
+        post.slug !== currentSlug && post.slug !== 'scholarships-for-kenyan-students'
+    )
+    .slice(0, 3);
 }
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  return blogPosts
+    .filter((post) => post.slug !== 'scholarships-for-kenyan-students')
+    .map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
@@ -54,7 +63,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) notFound();
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(180deg,#f6f8fc_0%,#ffffff_24%,#f7faff_100%)] text-slate-900">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#f6f8fc_0%,#ffffff_24%,#f4f8fb_100%)] text-slate-900">
       <Navbar />
 
       <main>
@@ -75,7 +84,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <div className="mt-8 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#d8e3f6] bg-white/90 px-4 py-2 text-sm font-medium text-[#0f3a78] shadow-sm">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#cddbf7] bg-white/90 px-4 py-2 text-sm font-medium text-[#1f62e4] shadow-sm">
                   {post.category}
                 </div>
                 <h1 className="mt-6 text-4xl font-semibold tracking-[-0.03em] text-slate-950 sm:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
@@ -85,16 +94,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {post.excerpt}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-slate-500">
-                  <span className="rounded-full border border-[#e3e8f1] bg-white px-3 py-1">
+                  <span className="rounded-full border border-[#d4e2ec] bg-white px-3 py-1">
                     {post.readTime}
                   </span>
-                  <span className="rounded-full border border-[#e3e8f1] bg-white px-3 py-1">
+                  <span className="rounded-full border border-[#d4e2ec] bg-white px-3 py-1">
                     {post.date}
                   </span>
                 </div>
               </div>
 
-              <div className="rounded-[18px] border border-[#e3e8f1] bg-white/85 p-6 shadow-[0_18px_55px_rgba(15,58,120,0.08)] backdrop-blur">
+              <div className="rounded-[18px] border border-[#d4e2ec] bg-white/85 p-6 shadow-[0_18px_55px_rgba(31,98,228,0.08)] backdrop-blur">
                 <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                   Need help applying?
                 </div>
@@ -102,18 +111,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   Talk to a Barak Pathways advisor
                 </div>
                 <p className="mt-2 text-sm leading-7 text-slate-600">
-                  Get 1:1 guidance on destinations, documents, intakes, and scholarship planning.
+                  Get 1:1 guidance on destinations, documents, and intakes.
                 </p>
                 <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                   <Link
                     href="/contact-us"
-                    className="inline-flex w-full items-center justify-center rounded-full bg-[#1d6ef2] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0f3a78] sm:w-auto"
+                    className="inline-flex w-full items-center justify-center rounded-full bg-[#4f8ff0] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1f62e4] sm:w-auto"
                   >
-                    Book consultation
+                    Start your Journey
                   </Link>
                   <Link
                     href="/blogs"
-                    className="inline-flex w-full items-center justify-center rounded-full border border-[#d8e3f6] bg-white px-5 py-2.5 text-sm font-semibold text-[#0f3a78] transition hover:bg-[#f7faff] sm:w-auto"
+                    className="inline-flex w-full items-center justify-center rounded-full border border-[#cddbf7] bg-white px-5 py-2.5 text-sm font-semibold text-[#1f62e4] transition hover:bg-[#f4f8fb] sm:w-auto"
                   >
                     Browse blogs
                   </Link>
@@ -126,11 +135,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <section className="py-12 sm:py-14">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-[1fr_0.36fr] lg:items-start">
-              <article className="rounded-[20px] border border-[#e3e8f1] bg-white p-6 shadow-[0_10px_28px_rgba(15,58,120,0.06)] sm:p-9">
+              <article className="rounded-[20px] border border-[#d4e2ec] bg-white p-6 shadow-[0_10px_28px_rgba(31,98,228,0.06)] sm:p-9">
                 <ReactMarkdown
                   components={{
                     h2: ({ children }) => (
-                      <h2 className="mt-10 scroll-mt-24 border-t border-[#e8edf5] pt-8 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+                      <h2 className="mt-10 scroll-mt-24 border-t border-[#d4e2ec] pt-8 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
                         {children}
                       </h2>
                     ),
@@ -156,18 +165,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     ),
                     li: ({ children }) => <li className="pl-1">{children}</li>,
                     blockquote: ({ children }) => (
-                      <blockquote className="mt-6 rounded-[16px] border border-[#d8e3f6] bg-[#f7faff] p-5 text-slate-700 shadow-sm">
+                      <blockquote className="mt-6 rounded-[16px] border border-[#cddbf7] bg-[#f4f8fb] p-5 text-slate-700 shadow-sm">
                         {children}
                       </blockquote>
                     ),
-                    hr: () => <hr className="my-10 border-[#e8edf5]" />,
+                    hr: () => <hr className="my-10 border-[#d4e2ec]" />,
                     code: ({ children }) => (
                       <code className="rounded bg-slate-100 px-1.5 py-0.5 text-[0.92em] text-slate-800">
                         {children}
                       </code>
                     ),
                     pre: ({ children }) => (
-                      <pre className="mt-6 overflow-x-auto rounded-[16px] border border-[#e3e8f1] bg-slate-950 p-5 text-sm text-slate-50 shadow-sm">
+                      <pre className="mt-6 overflow-x-auto rounded-[16px] border border-[#d4e2ec] bg-slate-950 p-5 text-sm text-slate-50 shadow-sm">
                         {children}
                       </pre>
                     ),
@@ -175,7 +184,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     a: ({ children, href }) => (
                       <a
                         href={href}
-                        className="font-semibold text-[#1d6ef2] underline decoration-[#1d6ef2]/25 underline-offset-4 transition hover:decoration-[#1d6ef2]/60"
+                        className="font-semibold text-[#4f8ff0] underline decoration-[#4f8ff0]/25 underline-offset-4 transition hover:decoration-[#4f8ff0]/60"
                       >
                         {children}
                       </a>
@@ -185,16 +194,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {post.content}
                 </ReactMarkdown>
 
-                <div className="mt-12 flex flex-col gap-3 border-t border-[#e8edf5] pt-7 sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-12 flex flex-col gap-3 border-t border-[#d4e2ec] pt-7 sm:flex-row sm:items-center sm:justify-between">
                   <Link
                     href="/blogs"
-                    className="text-sm font-semibold text-[#0f3a78] transition hover:text-[#0b2b5c]"
+                    className="text-sm font-semibold text-[#1f62e4] transition hover:text-[#174fbf]"
                   >
                     {'\u2190'} Back to Blogs
                   </Link>
                   <Link
                     href="/contact-us"
-                    className="text-sm font-semibold text-[#1d6ef2] transition hover:text-[#0f3a78]"
+                    className="text-sm font-semibold text-[#4f8ff0] transition hover:text-[#1f62e4]"
                   >
                     Talk to an advisor {'\u2192'}
                   </Link>
@@ -202,7 +211,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </article>
 
               <aside className="space-y-5 lg:sticky lg:top-24">
-                <div className="rounded-[18px] border border-[#e3e8f1] bg-white p-6 shadow-[0_10px_28px_rgba(15,58,120,0.06)]">
+                <div className="rounded-[18px] border border-[#d4e2ec] bg-white p-6 shadow-[0_10px_28px_rgba(31,98,228,0.06)]">
                   <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                     Related posts
                   </div>
@@ -211,9 +220,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       <Link
                         key={item.slug}
                         href={`/blogs/${item.slug}`}
-                        className="group block rounded-[14px] border border-[#eef2f8] bg-[#fbfcff] p-4 transition hover:border-[#d8e3f6] hover:bg-white"
+                        className="group block rounded-[14px] border border-[#e1ebf2] bg-[#f8fdff] p-4 transition hover:border-[#cddbf7] hover:bg-white"
                       >
-                        <div className="text-sm font-semibold text-slate-900 transition group-hover:text-[#0f3a78]">
+                        <div className="text-sm font-semibold text-slate-900 transition group-hover:text-[#1f62e4]">
                           {item.title}
                         </div>
                         <div className="mt-2 text-xs text-slate-500">
@@ -224,7 +233,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </div>
                 </div>
 
-                <div className="rounded-[18px] border border-[#d8e3f6] bg-[linear-gradient(180deg,#ffffff_0%,#f7faff_100%)] p-6 shadow-[0_14px_35px_rgba(15,58,120,0.08)]">
+                <div className="rounded-[18px] border border-[#cddbf7] bg-[linear-gradient(180deg,#ffffff_0%,#f4f8fb_100%)] p-6 shadow-[0_14px_35px_rgba(31,98,228,0.08)]">
                   <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                     Quick action
                   </div>
@@ -236,7 +245,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </p>
                   <Link
                     href="/contact-us"
-                    className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#1d6ef2] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0f3a78]"
+                    className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#4f8ff0] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1f62e4]"
                   >
                     Contact us
                   </Link>

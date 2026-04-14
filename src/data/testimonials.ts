@@ -8,7 +8,7 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    quote: "Barak Pathways helped me get into University of Derby. Now I'm earning 3.5M KES/year!",
+    quote: "Barak Pathways helped me get into University of Derby and build a stronger career path.",
     name: "James",
     location: "Eldoret",
     country: "United Kingdom",
@@ -50,3 +50,4 @@ export const testimonials: Testimonial[] = [
     emoji: "\uD83C\uDFDD\uFE0F",
   },
 ];
+

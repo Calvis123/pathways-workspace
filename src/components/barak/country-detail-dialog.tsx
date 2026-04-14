@@ -14,8 +14,6 @@ import { Separator } from '@/components/ui/separator';
 import {
   GraduationCap,
   CheckCircle2,
-  Banknote,
-  Award,
   BookOpen,
   Globe,
   MessageCircle,
@@ -115,32 +113,6 @@ export function CountryDetailDialog({
 
           <Separator />
 
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <Banknote className="w-5 h-5 text-brand-blue" />
-              <h3 className="text-lg font-bold text-gray-900">Cost of Living</h3>
-            </div>
-            <div className="bg-brand-light rounded-xl p-4">
-              <p className="text-brand-dark font-semibold text-lg">{country.costOfLiving}</p>
-              <p className="text-sm text-gray-500 mt-1">Estimated monthly expenses including accommodation and food</p>
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Award className="w-5 h-5 text-brand-blue" />
-              <h3 className="text-lg font-bold text-gray-900">Available Scholarships</h3>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {country.scholarships.map((s) => (
-                <div key={s} className="flex items-start gap-2 bg-yellow-50 rounded-lg p-3">
-                  <Award className="w-4 h-4 text-brand-yellow flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">{s}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {country.testimonials.length > 0 && (
             <>
               <Separator />
@@ -173,4 +145,5 @@ export function CountryDetailDialog({
     </Dialog>
   );
 }
+
 

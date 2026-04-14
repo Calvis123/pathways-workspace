@@ -401,3 +401,4 @@ Many students do not succeed on their first attempt, but that does not mean they
 Consistency and persistence are key. With the right preparation and mindset, you can secure a scholarship and achieve your goal of studying abroad.`,
   },
 ];
+

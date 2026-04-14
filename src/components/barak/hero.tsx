@@ -77,8 +77,8 @@ export function Hero() {
                   <BadgeDollarSign className="w-6 h-6 text-brand-yellow" />
                 </div>
                 <div>
-                  <p className="text-white font-bold text-lg">KES 40,000</p>
-                  <p className="text-white/70 text-sm">Pay 20k now, 20k after visa</p>
+                  <p className="text-white font-bold text-lg">Guided Process</p>
+                  <p className="text-white/70 text-sm">Clear support from start to visa readiness</p>
                 </div>
               </CardContent>
             </Card>
@@ -94,3 +94,4 @@ export function Hero() {
     </section>
   );
 }
+

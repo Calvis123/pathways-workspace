@@ -20,13 +20,14 @@ const categoryColors: Record<string, string> = {
   Guides: 'bg-brand-blue/10 text-brand-blue',
   IELTS: 'bg-green-50 text-green-700',
   'Visa Guide': 'bg-orange-50 text-orange-700',
-  Scholarships: 'bg-brand-yellow/20 text-brand-dark',
+  Guidance: 'bg-brand-light text-brand-dark',
 };
 
 export function BlogSection() {
   const [selectedPost, setSelectedPost] = useState<number | null>(null);
+  const visiblePosts = blogPosts.filter((bp) => bp.slug !== 'scholarships-for-kenyan-students');
 
-  const post = selectedPost !== null ? blogPosts[selectedPost] : null;
+  const post = selectedPost !== null ? visiblePosts[selectedPost] : null;
 
   return (
     <section id="blog" className="py-20 bg-gray-50">
@@ -39,7 +40,7 @@ export function BlogSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {blogPosts.map((bp, i) => (
+          {visiblePosts.map((bp, i) => (
             <motion.div key={bp.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-shadow rounded-xl border-gray-100">
                 <div className="h-1 bg-brand-blue rounded-t-xl" />
@@ -111,3 +112,4 @@ export function BlogSection() {
     </section>
   );
 }
+

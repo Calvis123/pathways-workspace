@@ -30,8 +30,8 @@ export const processSteps = [
   },
   {
     step: 2,
-    title: "Pay Consultation Fee",
-    description: "Pay KES 20,000 to start your journey with us.",
+    title: "Confirm Your Spot",
+    description: "Confirm your spot so we can begin your guided process.",
     icon: "\uD83D\uDCB3",
   },
   {
@@ -55,7 +55,7 @@ export const processSteps = [
   {
     step: 6,
     title: "Visa Approved!",
-    description: "Pay the remaining KES 20,000. Congratulations!",
+    description: "Congratulations, your next step is pre-departure readiness.",
     icon: "\uD83C\uDF89",
   },
   {
@@ -71,3 +71,4 @@ export const processSteps = [
     icon: "\uD83C\uDF0D",
   },
 ];
+

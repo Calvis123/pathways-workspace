@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   category: "education",
   icons: {
-    icon: "/images/pathways-logo.png",
+    icon: "/images/barak-pathways-logo-transparent-v2.png",
   },
   openGraph: {
     title: "Barak Pathways - Your Path to Studying Overseas",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     locale: "en_KE",
     images: [
       {
-        url: "/images/pathways-logo.png",
+        url: "/images/barak-pathways-logo-transparent-v2.png",
         alt: "Barak Pathways logo",
       },
     ],
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "Barak Pathways - Your Path to Studying Overseas",
     description:
       "Expert consultation for studying in the UK, Canada, Australia, and more. 40+ students successfully placed.",
-    images: ["/images/pathways-logo.png"],
+    images: ["/images/barak-pathways-logo-transparent-v2.png"],
   },
   robots: {
     index: true,
@@ -72,7 +72,7 @@ export default function RootLayout({
               "@type": "EducationalOrganization",
               name: "Barak Pathways",
               url: "https://barakpathways.com",
-              logo: "https://barakpathways.com/images/pathways-logo.png",
+              logo: "https://barakpathways.com/images/barak-pathways-logo-transparent-v2.png",
               description:
                 "Study abroad consultancy helping Kenyan students study in the UK, Canada, Australia, Malta, Cyprus, New Zealand, and Spain.",
               address: {

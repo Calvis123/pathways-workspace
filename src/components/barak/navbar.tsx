@@ -82,13 +82,13 @@ export function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-3 text-left">
-            <div className="relative h-10 w-32 sm:h-11 sm:w-36">
+            <div className="relative h-14 w-48 sm:h-16 sm:w-56">
               <Image
-                src="/images/pathways-logo.png"
+                src="/images/barak-pathways-logo-transparent-v2.png"
                 alt="Barak Pathways logo"
                 fill
-                sizes="144px"
-                className="object-contain object-left"
+                sizes="(min-width: 640px) 224px, 192px"
+                className="object-contain object-left drop-shadow-[0_6px_14px_rgba(10,61,168,0.22)] contrast-110 saturate-110"
                 priority
               />
             </div>

@@ -82,12 +82,12 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr_0.85fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
-              <div className="relative h-12 w-40">
+              <div className="relative h-16 w-52 sm:h-20 sm:w-60">
                 <Image
-                  src="/images/pathways-logo.png"
+                  src="/images/barak-pathways-logo-transparent-v2.png"
                   alt="Barak Pathways logo"
                   fill
-                  sizes="160px"
+                  sizes="(min-width: 640px) 240px, 208px"
                   className="object-contain object-left"
                 />
               </div>

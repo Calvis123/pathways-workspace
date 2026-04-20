@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { FormEvent, useEffect, useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { countries } from '@/data/countries';
@@ -253,6 +254,27 @@ export function ConsultationPopupTrigger({
                 >
                   {isSubmitting ? 'Submitting...' : 'Start Your Journey'}
                 </button>
+
+                <div className="mt-1 flex items-center gap-3">
+                  <span className="h-px flex-1 bg-[#cad8f2]" />
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6b84ad]">OR</span>
+                  <span className="h-px flex-1 bg-[#cad8f2]" />
+                </div>
+
+                <Link
+                  href="https://wa.me/254113043315?text=Hi%2C%20I%20have%20an%20inquiry%20about%20studying%20abroad%20with%20Barak%20Pathways"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-12 items-center justify-center gap-2.5 rounded-xl border border-[#20c15f] bg-[linear-gradient(135deg,#1fbf60_0%,#129744_100%)] px-6 text-base font-semibold text-white shadow-[0_14px_30px_rgba(20,151,68,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(20,151,68,0.32)]"
+                >
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/18">
+                    <svg viewBox="0 0 32 32" aria-hidden="true" className="h-4 w-4 fill-current">
+                      <path d="M19.11 17.23c-.27-.14-1.57-.77-1.81-.86-.24-.09-.41-.14-.59.13-.18.27-.68.85-.84 1.02-.15.18-.31.2-.58.07-.27-.14-1.13-.42-2.15-1.35-.79-.7-1.33-1.56-1.49-1.82-.16-.27-.02-.41.12-.55.12-.12.27-.31.41-.47.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.14-.59-1.42-.81-1.95-.21-.5-.43-.43-.59-.44h-.5c-.18 0-.47.07-.72.34-.25.27-.95.93-.95 2.26 0 1.33.97 2.62 1.11 2.8.14.18 1.9 2.9 4.6 4.07.64.28 1.14.45 1.53.57.64.2 1.22.17 1.68.1.51-.08 1.57-.64 1.8-1.26.22-.62.22-1.15.15-1.26-.06-.11-.24-.18-.5-.32z" />
+                      <path d="M16.02 3.2c-7.05 0-12.77 5.72-12.77 12.77 0 2.24.58 4.42 1.67 6.33L3.2 28.8l6.65-1.74c1.84 1 3.91 1.53 6.02 1.53h.01c7.05 0 12.77-5.72 12.77-12.77 0-3.42-1.33-6.63-3.75-9.04a12.7 12.7 0 00-8.88-3.58zm0 23.23h-.01c-1.89 0-3.74-.51-5.35-1.46l-.38-.22-3.95 1.04 1.05-3.86-.24-.39a10.55 10.55 0 01-1.62-5.63c0-5.84 4.75-10.6 10.6-10.6 2.83 0 5.5 1.1 7.5 3.11a10.53 10.53 0 013.11 7.5c0 5.84-4.76 10.6-10.6 10.6z" />
+                    </svg>
+                  </span>
+                  Inquire on WhatsApp
+                </Link>
               </form>
             </div>
           </div>

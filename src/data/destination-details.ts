@@ -29,8 +29,8 @@ export interface DestinationDetail {
 
 export const destinationDetails: Record<string, DestinationDetail> = {
   'united-kingdom': {
-    tuitionRange: 'GBP 10,000 - GBP 38,000 per year',
-    annualLivingBudget: 'GBP 12,000 - GBP 18,000 per year',
+    tuitionRange: 'KSh 2M - 6M per year',
+    annualLivingBudget: 'KSh 1.8M - 2.4M per year',
     workWhileStudying:
       'Most international students can usually work up to 20 hours per week during study periods and full-time during official holidays, subject to visa conditions.',
     postStudyPathway:
@@ -119,12 +119,12 @@ export const destinationDetails: Record<string, DestinationDetail> = {
       'For many bachelor’s applications, KCSE alone may not be enough for the most selective universities, so foundation study or equivalent preparation can matter.',
       'Personal statements are especially important in the UK because universities often use them to judge clarity of motivation, course fit and academic seriousness.',
       'Top universities may also require interviews, entrance tests or especially strong grades, so “studying in the UK” is not one single standard but a wide range of competitiveness levels.',
-      'Bachelor’s tuition often falls in the GBP 10,000 to 20,000 range, master’s tuition may fall in the GBP 12,000 to 25,000 range, and top institutions can go well beyond that.',
+      'Bachelor’s tuition often falls in the Kshs 10,000 to 20,000 range, master’s tuition may fall in the Kshs 12,000 to 25,000 range, and top institutions can go well beyond that.',
     ],
   },
   canada: {
-    tuitionRange: 'CAD 15,000 - CAD 35,000 per year',
-    annualLivingBudget: 'CAD 12,000 - CAD 20,000 per year',
+    tuitionRange: 'KSh 2.7M - 5.5M per year',
+    annualLivingBudget: 'KSh 1.6M - 3.3M per year',
     workWhileStudying:
       'Eligible international students can often work part-time during study periods and full-time during scheduled breaks, depending on current permit rules.',
     postStudyPathway:
@@ -213,12 +213,12 @@ export const destinationDetails: Record<string, DestinationDetail> = {
       'What makes Canada especially attractive is not just education quality, but the clearer connection many students see between study, work experience and longer-term immigration pathways.',
       'Applications are made directly to universities rather than through one central system like UCAS in the UK, so students need to manage each institution’s deadlines and requirements carefully.',
       'For bachelor’s study, KCSE with good grades may be enough in some cases, but some institutions or pathways may still require bridging or foundation preparation.',
-      'Typical tuition ranges often fall around CAD 15,000 to 30,000 per year for bachelor’s and CAD 18,000 to 35,000 per year for many master’s programs, depending on course and institution.',
+      'Typical tuition ranges often fall around Kshs 15,000 to 30,000 per year for bachelor’s and Kshs 18,000 to 35,000 per year for many master’s programs, depending on course and institution.',
     ],
   },
   australia: {
-    tuitionRange: 'AUD 20,000 - AUD 45,000 per year',
-    annualLivingBudget: 'AUD 29,000+ per year',
+    tuitionRange: 'KSh 1.9M - 4.3M per year',
+    annualLivingBudget: 'KSh 2M - 2.6M per year',
     workWhileStudying:
       'International students in Australia may work within current visa limits during study periods and usually full-time during scheduled breaks, helping many gain experience and support living costs.',
     postStudyPathway:
@@ -307,12 +307,12 @@ export const destinationDetails: Record<string, DestinationDetail> = {
       'Its universities are strongly respected globally, which places Australia closer to the UK than to lower-cost destinations in terms of academic reputation.',
       'What makes Australia especially attractive is the combined package of quality education, work rights while studying and post-study visa options.',
       'Some universities may accept KCSE directly for certain pathways, while others may still require foundation preparation depending on the institution and course.',
-      'Bachelor’s tuition often ranges around AUD 20,000 to 45,000 per year, while many master’s programs can range from about AUD 22,000 to 50,000 depending on course and university.',
+      'Bachelor’s tuition often ranges around Kshs 20,000 to 45,000 per year, while many master’s programs can range from about Kshs 22,000 to 50,000 depending on course and university.',
     ],
   },
   malta: {
-    tuitionRange: 'EUR 6,000 - EUR 15,000 per year',
-    annualLivingBudget: 'EUR 8,500 - EUR 14,000 per year',
+    tuitionRange: 'KSh 1M - 2.25M per year',
+    annualLivingBudget: 'KSh 1M - 1.5M per year',
     workWhileStudying:
       'International students in Malta can usually work part-time, but not immediately. In many cases you need to stay in the country for a period first and secure the right permit before starting work. Student jobs are often found in tourism, hospitality, retail and customer service, so part-time work can help with day-to-day costs, but it should not be treated as guaranteed full financial support.',
     postStudyPathway:
@@ -384,8 +384,8 @@ export const destinationDetails: Record<string, DestinationDetail> = {
     ],
   },
   cyprus: {
-    tuitionRange: 'EUR 5,000 - EUR 12,000 per year',
-    annualLivingBudget: 'EUR 5,000 - EUR 9,600 per year',
+    tuitionRange: 'KSh 450K - 2M per year',
+    annualLivingBudget: 'KSh 900K - 1.5M per year',
     workWhileStudying:
       'Students in Cyprus may be able to work part-time, but the range of opportunities is usually narrower than in places like Canada or Australia. Jobs are often found in hospitality, tourism and retail, and income from part-time work is generally limited, so students should not depend on it as their main financial plan.',
     postStudyPathway:
@@ -466,13 +466,13 @@ export const destinationDetails: Record<string, DestinationDetail> = {
       'Cyprus is a practical option, but it is not generally considered a top global prestige destination.',
       'The distinction between the south and the north matters a lot. Southern institutions usually offer stronger EU-linked recognition, while northern institutions may be cheaper but can create recognition issues in some countries.',
       'Admission is typically easier than in highly competitive destinations like the UK, and many universities offer foundation or preparatory routes.',
-      'Tuition is relatively affordable, often in the EUR 3,000 to 10,000 range, though medicine and some specialised programs cost more.',
-      'Living costs are moderate and often fall around EUR 400 to 800 per month, but students should still budget carefully because part-time income is usually limited.',
+      'Tuition is relatively affordable, often in the Kshs 3,000 to 10,000 range, though medicine and some specialised programs cost more.',
+      'Living costs are moderate and often fall around Kshs 400 to 800 per month, but students should still budget carefully because part-time income is usually limited.',
     ],
   },
   spain: {
-    tuitionRange: 'EUR 8,000 - EUR 20,000 per year',
-    annualLivingBudget: 'EUR 9,600 - EUR 14,400 per year',
+    tuitionRange: 'KSh 150K - 900K per year',
+    annualLivingBudget: 'KSh 1.2M - 1.8M per year',
     workWhileStudying:
       'Students in Spain can work part-time, but opportunities are usually more realistic for those who can communicate in Spanish. Jobs are often found in hospitality, tourism and retail, and work rights do not automatically translate into easy employment or high earnings.',
     postStudyPathway:
@@ -558,8 +558,8 @@ export const destinationDetails: Record<string, DestinationDetail> = {
     ],
   },
   'new-zealand': {
-    tuitionRange: 'NZD 20,000 - NZD 40,000 per year',
-    annualLivingBudget: 'NZD 15,000 - NZD 24,000 per year',
+    tuitionRange: 'KSh 1.4M - 2.7M per year',
+    annualLivingBudget: 'KSh 675K - 1.1M per year',
     workWhileStudying:
       'Eligible students in New Zealand can often work up to 20 hours per week during study periods and full-time during scheduled breaks, depending on visa conditions. Common part-time jobs are often found in hospitality, retail, agriculture and customer service.',
     postStudyPathway:
@@ -647,9 +647,10 @@ export const destinationDetails: Record<string, DestinationDetail> = {
       'New Zealand is a strong destination, but it is geographically far from many students’ home countries, which can make travel costs noticeably higher.',
       'The job market is smaller than in countries like Canada or Australia, so opportunities exist but are not as broad in scale.',
       'The country has fewer universities, which means fewer choices overall, even though education quality remains consistently strong.',
-      'Tuition is moderately expensive, often around NZD 22,000 to 35,000 for many bachelor’s programs and NZD 26,000 to 40,000 for many master’s programs.',
+      'Tuition is moderately expensive, often around Kshs 22,000 to 35,000 for many bachelor’s programs and Kshs 26,000 to 40,000 for many master’s programs.',
       'For students who value safety, lifestyle, strong education standards and a post-study work option, New Zealand can still be a very well-balanced choice.',
     ],
   },
 };
+
 

@@ -39,7 +39,7 @@ export const countries: Country[] = [
       "English proficiency (IELTS 6.0+)",
       "Tuberculosis test certificate",
     ],
-    costOfLiving: "\u00A31,200 - \u00A31,800/month (outside London)",
+    costOfLiving: "KSh 150K - 200K/month",
     scholarships: [
       "Chevening Scholarships",
       "Commonwealth Scholarships",
@@ -77,11 +77,11 @@ export const countries: Country[] = [
     visaRequirements: [
       "Valid passport",
       "Letter of Acceptance from DLI",
-      "Proof of funds (CAD 10,000/year + tuition)",
+      "Proof of funds (Kshs 10,000/year + tuition)",
       "English proficiency (IELTS 6.0+)",
       "Medical examination (if required)",
     ],
-    costOfLiving: "CAD 1,000 - CAD 1,500/month",
+    costOfLiving: "KSh 130K - 275K/month",
     scholarships: [
       "Vanier Canada Graduate Scholarships",
       "Ontario Trillium Scholarships",
@@ -114,11 +114,11 @@ export const countries: Country[] = [
     visaRequirements: [
       "Valid passport",
       "Confirmation of Enrolment (CoE)",
-      "Proof of funds (AUD 24,505/year + tuition)",
+      "Proof of funds (Kshs 24,505/year + tuition)",
       "English proficiency (IELTS 6.0+)",
       "Overseas Student Health Cover (OSHC)",
     ],
-    costOfLiving: "AUD 1,400 - AUD 2,500/month",
+    costOfLiving: "KSh 170K - 220K/month",
     scholarships: [
       "Australia Awards Scholarships",
       "Endeavour Scholarships",
@@ -155,7 +155,7 @@ export const countries: Country[] = [
       "English proficiency proof",
       "Health insurance",
     ],
-    costOfLiving: "\u20AC700 - \u20AC1,200/month",
+    costOfLiving: "KSh 83K - 125K/month",
     scholarships: [
       "Malta Government Scholarships",
       "EU Erasmus+ Scholarships",
@@ -192,7 +192,7 @@ export const countries: Country[] = [
       "Health insurance",
       "Police clearance certificate",
     ],
-    costOfLiving: "\u20AC400 - \u20AC800/month",
+    costOfLiving: "KSh 75K - 125K/month",
     scholarships: [
       "Cyprus Government Scholarships",
       "University-specific grants",
@@ -225,11 +225,11 @@ export const countries: Country[] = [
     visaRequirements: [
       "Valid passport",
       "University acceptance letter",
-      "Proof of funds (\u20AC600/month minimum)",
+      "Proof of funds (Kshs 600/month minimum)",
       "Health insurance",
       "Medical certificate",
     ],
-    costOfLiving: "\u20AC800 - \u20AC1,200/month",
+    costOfLiving: "KSh 100K - 150K/month",
     scholarships: [
       "Spanish Government Scholarships (MAEC)",
       "Erasmus+ Scholarships",
@@ -262,11 +262,11 @@ export const countries: Country[] = [
     visaRequirements: [
       "Valid passport",
       "Offer of place from NZ institution",
-      "Proof of funds (NZD 20,000/year + tuition)",
+      "Proof of funds (Kshs 20,000/year + tuition)",
       "English proficiency (IELTS 6.0+)",
       "Medical and travel insurance",
     ],
-    costOfLiving: "NZD 1,200 - NZD 2,000/month",
+    costOfLiving: "KSh 56K - 92K/month",
     scholarships: [
       "New Zealand Scholarships",
       "NZ Aid Programme",
@@ -282,4 +282,6 @@ export const countries: Country[] = [
     ],
   },
 ];
+
+
 

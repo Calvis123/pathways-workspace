@@ -15,6 +15,7 @@ import {
 import { countries } from '@/data/countries';
 import { getDestinationPath } from '@/lib/destination-utils';
 import { ConsultationPopupTrigger } from '@/components/barak/consultation-popup-trigger';
+import { RegistrationPopupTrigger } from '@/components/barak/registration-popup-trigger';
 
 const navLinks = [
   { label: 'Study destinations', href: '/#destinations', dropdown: true },
@@ -128,6 +129,11 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <RegistrationPopupTrigger
+              label="Registration"
+              className="hidden h-11 items-center rounded-full border border-[#cddbf7] bg-white px-5 text-sm font-semibold text-[#1f62e4] shadow-[0_10px_24px_rgba(31,98,228,0.1)] transition hover:-translate-y-0.5 hover:bg-[#eef5ff] sm:inline-flex"
+            />
+
             <ConsultationPopupTrigger
               label="Start your Journey"
               className="hidden h-11 items-center rounded-full bg-[linear-gradient(135deg,#eef1f5_0%,#dde5ef_100%)] px-5 text-sm font-semibold text-slate-950 shadow-[0_14px_34px_rgba(79,143,240,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(79,143,240,0.28)] sm:inline-flex"
@@ -232,6 +238,10 @@ export function Navbar() {
                   <ConsultationPopupTrigger
                     label="Start your Journey"
                     className="mt-5 inline-flex h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1f62e4_0%,#4f8ff0_100%)] px-5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(31,98,228,0.18)]"
+                  />
+                  <RegistrationPopupTrigger
+                    label="Registration"
+                    className="mt-3 inline-flex h-12 items-center justify-center rounded-full border border-[#cddbf7] bg-white px-5 text-sm font-semibold text-[#1f62e4] shadow-[0_14px_34px_rgba(31,98,228,0.1)]"
                   />
 
                   <p className="mt-3 text-center text-xs leading-5 text-slate-500">

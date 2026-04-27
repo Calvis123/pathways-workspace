@@ -12,7 +12,7 @@ export const recentPlacements: Placement[] = [
   { name: "Kevin O.", university: "University of Toronto", country: "Canada", flag: "\uD83C\uDDE8\uD83C\uDDE6", program: "Engineering" },
   { name: "Grace A.", university: "University of Melbourne", country: "Australia", flag: "\uD83C\uDDE6\uD83C\uDDFA", program: "Data Science" },
   { name: "Dennis K.", university: "University of Malta", country: "Malta", flag: "\uD83C\uDDF2\uD83C\uDDF9", program: "Tourism" },
-  { name: "Faith N.", university: "University of Cyprus", country: "Cyprus", flag: "\uD83C\uDDE8\uD83C\uDDFE", program: "Medicine" },
+  { name: "Faith N.", university: "University of South Florida", country: "USA", flag: "\uD83C\uDDFA\uD83C\uDDF8", program: "Public Health" },
   { name: "Alex T.", university: "University of Barcelona", country: "Spain", flag: "\uD83C\uDDEA\uD83C\uDDF8", program: "International Relations" },
   { name: "Samuel J.", university: "University of Auckland", country: "NZ", flag: "\uD83C\uDDF3\uD83C\uDDFF", program: "Agriculture" },
   { name: "Brian K.", university: "University of Leeds", country: "UK", flag: "\uD83C\uDDEC\uD83C\uDDE7", program: "Finance" },

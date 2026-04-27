@@ -81,12 +81,12 @@ export const scholarships: Scholarship[] = [
     deadline: "Varies annually",
   },
   {
-    country: "Cyprus",
-    flag: "\uD83C\uDDE8\uD83C\uDDFE",
-    name: "Cyprus Government Scholarships",
-    level: "Both",
-    eligibility: "International students for undergraduate and postgraduate studies in Cyprus.",
-    deadline: "May annually",
+    country: "USA",
+    flag: "\uD83C\uDDFA\uD83C\uDDF8",
+    name: "Fulbright Foreign Student Program",
+    level: "Postgraduate",
+    eligibility: "Outstanding international graduates pursuing postgraduate study or research in the United States.",
+    deadline: "Varies by country cycle",
   },
 ];
 

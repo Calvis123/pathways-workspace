@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Award, ArrowRight } from 'lucide-react';
 
-const countries = ['All', 'United Kingdom', 'Canada', 'Australia', 'New Zealand', 'Spain', 'Malta', 'Cyprus'];
+const countries = ['All', 'United Kingdom', 'Canada', 'Australia', 'New Zealand', 'Spain', 'Malta', 'USA'];
 
 const levelColors: Record<string, string> = {
   Postgraduate: 'bg-brand-blue/10 text-brand-blue',

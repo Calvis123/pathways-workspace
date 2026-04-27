@@ -208,10 +208,6 @@ export default function ContactUsPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#cddbf7] bg-white px-4 py-2 text-sm font-medium text-[#1f62e4] shadow-sm">
-                  <Mail className="h-4 w-4" />
-                  Lead capture
-                </div>
                 <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
                   Prefer to send your details in one place?
                 </h2>

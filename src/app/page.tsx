@@ -59,7 +59,7 @@ const trustStats = [
   {
     value: '7',
     label: 'study destinations supported',
-    detail: 'UK, Canada, Australia, Malta, Cyprus, Spain and New Zealand.',
+    detail: 'UK, Canada, Australia, Malta, USA, Spain and New Zealand.',
   },
   {
     value: '1:1',

@@ -1,0 +1,19 @@
+<svg width="1600" height="960" viewBox="0 0 1600 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="960" rx="48" fill="url(#bg)"/>
+  <circle cx="1246" cy="194" r="88" fill="#FFD38B"/>
+  <path d="M0 710C194 638 379 648 565 725C730 794 888 813 1077 756C1244 706 1413 703 1600 763V960H0V710Z" fill="#9C5A15"/>
+  <path d="M0 804C187 741 404 770 584 829C736 878 903 888 1096 839C1268 795 1428 798 1600 845V960H0V804Z" fill="#5B3310"/>
+  <path d="M236 592C334 448 470 332 628 286C676 386 701 479 736 592H236Z" fill="#F7E5B4" fill-opacity="0.85"/>
+  <rect x="1116" y="164" width="286" height="186" rx="28" fill="#FFFFFF" fill-opacity="0.1" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="2"/>
+  <text x="1148" y="224" fill="#FFF7ED" font-family="Arial, sans-serif" font-size="26" font-weight="700">Cyprus</text>
+  <text x="1148" y="268" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="18">Affordable education</text>
+  <text x="1148" y="302" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="18">Mediterranean climate</text>
+  <text x="1148" y="336" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="18">Growing English programs</text>
+  <defs>
+    <linearGradient id="bg" x1="138" y1="74" x2="1450" y2="878" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D98A2B"/>
+      <stop offset="0.55" stop-color="#A85B16"/>
+      <stop offset="1" stop-color="#4B260A"/>
+    </linearGradient>
+  </defs>
+</svg>

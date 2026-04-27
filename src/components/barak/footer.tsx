@@ -94,7 +94,7 @@ export function Footer() {
             </div>
 
             <p className="mt-5 max-w-md text-sm leading-7 text-white/70">
-              Guidance for Kenyan students exploring the UK, Canada, Australia, Malta, Cyprus, Spain and New Zealand, with support spanning applications, IELTS and visa readiness.
+              Guidance for Kenyan students exploring the UK, Canada, Australia, Malta, USA, Spain and New Zealand, with support spanning applications, IELTS and visa readiness.
             </p>
 
             <div className="mt-6">

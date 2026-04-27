@@ -12,7 +12,7 @@ export const faqs: FAQ[] = [
   {
     question: "Which countries do you support?",
     answer:
-      "We help students study in the United Kingdom, Canada, Australia, Malta, Cyprus, Spain, and New Zealand. Each destination offers unique advantages, and we'll help you choose the best fit for your goals and budget.",
+      "We help students study in the United Kingdom, Canada, Australia, Malta, USA, Spain, and New Zealand. Each destination offers unique advantages, and we'll help you choose the best fit for your goals and budget.",
   },
   {
     question: "What's included in the consultation?",
@@ -22,7 +22,7 @@ export const faqs: FAQ[] = [
   {
     question: "How long does visa processing take?",
     answer:
-      "Visa processing times vary by country. The UK typically takes 3-6 weeks, Canada 4-8 weeks, Australia 4-6 weeks, and European countries like Malta and Cyprus 2-4 weeks. We help you prepare all documents to ensure a smooth process.",
+      "Visa processing times vary by country. The UK typically takes 3-6 weeks, Canada 4-8 weeks, Australia 4-6 weeks, USA timelines vary by embassy appointment availability, and European countries like Malta can take 2-4 weeks. We help you prepare all documents to ensure a smooth process.",
   },
   {
     question: "What is the IELTS training like?",

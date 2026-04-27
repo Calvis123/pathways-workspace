@@ -4,11 +4,18 @@ import { MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function WhatsAppButton() {
+  const handleClick = () => {
+    if (typeof window === 'undefined') return;
+    const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
+    fbq?.('track', 'Lead');
+  };
+
   return (
     <motion.a
       href="https://wa.me/254113043315?text=Hi%2C%20I%27m%20interested%20in%20studying%20abroad%20through%20Barak%20Pathways"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="fixed bottom-6 right-6 z-50 group"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}

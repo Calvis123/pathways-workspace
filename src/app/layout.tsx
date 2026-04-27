@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://barakpathways.com"),
   title: "Barak Pathways - Study Abroad Consultancy | UK, Canada, Australia & More",
   description:
-    "Your seamless path to studying overseas. Expert consultation for studying in the UK, Canada, Australia, Malta, Cyprus, New Zealand, and Spain. 40+ students successfully placed. Book your free consultation today!",
+    "Your seamless path to studying overseas. Expert consultation for studying in the UK, Canada, Australia, Malta, USA, New Zealand, and Spain. 40+ students successfully placed. Book your free consultation today!",
   keywords: [
     "study abroad",
     "study in UK",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Barak Pathways - Your Path to Studying Overseas",
     description:
-      "Expert consultation for studying in the UK, Canada, Australia, Malta, Cyprus, New Zealand, and Spain. 40+ students successfully placed.",
+      "Expert consultation for studying in the UK, Canada, Australia, Malta, USA, New Zealand, and Spain. 40+ students successfully placed.",
     url: "/",
     siteName: "Barak Pathways",
     type: "website",
@@ -74,7 +75,7 @@ export default function RootLayout({
               url: "https://barakpathways.com",
               logo: "https://barakpathways.com/images/barak-pathways-logo-transparent-v2.png",
               description:
-                "Study abroad consultancy helping Kenyan students study in the UK, Canada, Australia, Malta, Cyprus, New Zealand, and Spain.",
+                "Study abroad consultancy helping Kenyan students study in the UK, Canada, Australia, Malta, USA, New Zealand, and Spain.",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Nairobi",
@@ -95,6 +96,20 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
+        <Script id="meta-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '2058828338322865');
+            fbq('track', 'PageView');
+          `}
+        </Script>
         {children}
         <Toaster />
       </body>

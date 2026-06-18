@@ -117,6 +117,14 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
     setSuccess('');
   };
 
+  const handleOpenChange = (nextOpen: boolean) => {
+    setOpen(nextOpen);
+
+    if (!nextOpen) {
+      clearForm();
+    }
+  };
+
   const validateIntro = () => {
     if (!form.program || !form.firstName || !form.lastName || !form.email || !form.phone || !form.nationality) {
       setError('Please fill in program, first name, last name, email, phone and nationality.');
@@ -152,14 +160,7 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
     }
   };
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (step !== 'final') {
-      goNext();
-      return;
-    }
-
+  const handleSubmit = async () => {
     if (!validateIntro()) {
       setStep('intro');
       setSuccess('');
@@ -220,7 +221,7 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
         {label}
       </button>
 
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent className="max-h-[92vh] w-[95vw] max-w-[760px] overflow-y-auto rounded-[8px] border border-[#dadce0] bg-[#f1f3f4] p-0 font-['Titillium_Web',Arial,sans-serif] shadow-[0_24px_80px_rgba(60,64,67,0.28)]">
           <DialogHeader className="sr-only">
             <DialogTitle>Application Form</DialogTitle>
@@ -247,7 +248,10 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="grid gap-3 px-4 pb-4 sm:px-6 sm:pb-6">
+          <form
+            onSubmit={(event: FormEvent<HTMLFormElement>) => event.preventDefault()}
+            className="grid gap-3 px-4 pb-4 sm:px-6 sm:pb-6"
+          >
             {step === 'intro' ? (
               <>
                 <Question label="SELECT A PROGRAM" required>
@@ -403,7 +407,8 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
                   </button>
                 ) : (
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={handleSubmit}
                     disabled={isSubmitting}
                     className="inline-flex h-11 min-w-32 items-center justify-center rounded-[4px] bg-[#c76b00] px-6 text-base font-bold text-white shadow-[0_1px_3px_rgba(192,104,0,0.28)] transition hover:bg-[#b76000] disabled:cursor-not-allowed disabled:opacity-60"
                   >

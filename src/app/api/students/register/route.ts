@@ -42,6 +42,46 @@ function parsePayload(body: unknown): StudentRegistrationPayload | null {
   };
 }
 
+function normalizeProgramLevel(level: string) {
+  const value = level.trim().toLowerCase();
+  const map: Record<string, string> = {
+    'foundation year program': 'certificate',
+    "bachelor's program": 'undergraduate',
+    'bachelors program': 'undergraduate',
+    "master's program": 'masters',
+    'masters program': 'masters',
+    'german language program': 'certificate',
+    'apprenticeship & job placement': 'certificate',
+    'apprenticeship and job placement': 'certificate',
+  };
+  return map[value] || value;
+}
+
+function getCrmErrorMessage(status: number, body: string) {
+  const normalizedBody = body.toLowerCase();
+
+  if (status === 400 && normalizedBody.includes('"error":"unknown error."')) {
+    return 'This email is already registered in the CRM. Please use a different email or check the CRM record.';
+  }
+
+  try {
+    const parsed = JSON.parse(body) as { error?: unknown; message?: unknown };
+    const rawMessage = typeof parsed.message === 'string' ? parsed.message : parsed.error;
+
+    if (typeof rawMessage === 'string') {
+      if (rawMessage.includes('Invalid email')) {
+        return 'Please enter a valid email address.';
+      }
+
+      return rawMessage.slice(0, 220);
+    }
+  } catch {
+    // Fall through to a readable generic message below.
+  }
+
+  return 'The CRM rejected this registration. Please check the submitted details and try again.';
+}
+
 export async function POST(request: NextRequest) {
   const crmUrl =
     process.env.STUDENT_REGISTER_API_URL ||
@@ -67,7 +107,7 @@ export async function POST(request: NextRequest) {
     email: payload.email,
     phone: payload.phone,
     country_interest: payload.country,
-    program_level: payload.level,
+    program_level: normalizeProgramLevel(payload.level),
   };
 
   if (payload.location) {
@@ -99,11 +139,13 @@ export async function POST(request: NextRequest) {
 
   if (!crmResponse.ok) {
     const text = await crmResponse.text();
+    const message = getCrmErrorMessage(crmResponse.status, text);
     return NextResponse.json(
       {
-        message: 'Failed to send registration to CRM API.',
+        message,
         crmStatus: crmResponse.status,
         crmBody: text.slice(0, 700),
+        code: message.includes('already registered') ? 'DUPLICATE_EMAIL' : 'CRM_FORWARD_ERROR',
       },
       { status: 502 }
     );

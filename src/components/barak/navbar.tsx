@@ -130,7 +130,7 @@ export function Navbar() {
 
           <div className="flex items-center gap-3">
             <RegistrationPopupTrigger
-              label="Registration"
+              label="Apply Now"
               className="hidden h-11 items-center rounded-full border border-[#cddbf7] bg-white px-5 text-sm font-semibold text-[#1f62e4] shadow-[0_10px_24px_rgba(31,98,228,0.1)] transition hover:-translate-y-0.5 hover:bg-[#eef5ff] sm:inline-flex"
             />
 
@@ -240,7 +240,7 @@ export function Navbar() {
                     className="mt-5 inline-flex h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1f62e4_0%,#4f8ff0_100%)] px-5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(31,98,228,0.18)]"
                   />
                   <RegistrationPopupTrigger
-                    label="Registration"
+                    label="Apply Now"
                     className="mt-3 inline-flex h-12 items-center justify-center rounded-full border border-[#cddbf7] bg-white px-5 text-sm font-semibold text-[#1f62e4] shadow-[0_14px_34px_rgba(31,98,228,0.1)]"
                   />
 

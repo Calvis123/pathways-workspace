@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { FormEvent, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { X } from 'lucide-react';
@@ -280,13 +281,26 @@ export function RegistrationPopupTrigger({
               </div>
             ) : null}
 
-            <div className="shrink-0 border-b border-[#d6e2f8] bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] px-5 py-5 sm:px-8 sm:py-6">
-              <h3 className="text-xl font-semibold leading-tight text-white sm:text-3xl">
-                Apply for your study abroad pathway.
-              </h3>
-              <p className="mt-2 max-w-2xl text-sm leading-7 text-[#eaf1ff] sm:text-base">
-                Share your details, education background and preferred program so your application record is captured clearly.
-              </p>
+            <div className="shrink-0 border-b border-[#d6e2f8] bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] p-4 sm:p-5">
+              <div className="grid gap-4 sm:grid-cols-[1fr_190px] sm:items-stretch">
+                <div className="order-2 flex flex-col justify-center px-1 pb-1 sm:order-1 sm:px-3">
+                  <h3 className="text-xl font-semibold leading-tight text-white sm:text-3xl">
+                    Apply for your study abroad pathway.
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-7 text-[#eaf1ff] sm:text-base">
+                    Share your details, education background and preferred program so your application record is captured clearly.
+                  </p>
+                </div>
+                <div className="order-1 relative h-32 overflow-hidden rounded-[8px] bg-white/15 shadow-[0_16px_38px_rgba(8,25,54,0.22)] sm:order-2 sm:h-auto">
+                  <Image
+                    src="/images/registration-hero.png"
+                    alt="Students reviewing international study application documents"
+                    fill
+                    sizes="(min-width: 640px) 190px, 92vw"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
             </div>
 
           <form

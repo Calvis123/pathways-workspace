@@ -61,7 +61,7 @@ function getCrmErrorMessage(status: number, body: string) {
   const normalizedBody = body.toLowerCase();
 
   if (status === 400 && normalizedBody.includes('"error":"unknown error."')) {
-    return 'This email is already registered in the CRM. Please use a different email or check the CRM record.';
+    return 'This email may already be registered, or the CRM rejected the submission. Please check the CRM record or try another email.';
   }
 
   try {
@@ -80,6 +80,10 @@ function getCrmErrorMessage(status: number, body: string) {
   }
 
   return 'The CRM rejected this registration. Please check the submitted details and try again.';
+}
+
+function isCrmFalseNegativeSuccess(status: number) {
+  return status === 404;
 }
 
 export async function POST(request: NextRequest) {
@@ -139,6 +143,19 @@ export async function POST(request: NextRequest) {
 
   if (!crmResponse.ok) {
     const text = await crmResponse.text();
+
+    if (isCrmFalseNegativeSuccess(crmResponse.status)) {
+      return NextResponse.json(
+        {
+          success: true,
+          crmStatus: crmResponse.status,
+          warning: 'CRM returned 404 after receiving the registration.',
+          crmBody: text.slice(0, 700),
+        },
+        { status: 200 }
+      );
+    }
+
     const message = getCrmErrorMessage(crmResponse.status, text);
     return NextResponse.json(
       {

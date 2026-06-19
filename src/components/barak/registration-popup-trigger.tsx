@@ -32,7 +32,7 @@ const programOptions = [
   "Bachelor's Program",
   "Master's Program",
   'German Language Program',
-  'Apprenticeship & Job Placement',
+  'Ausbildung',
 ];
 
 const educationSystems = [

@@ -51,6 +51,7 @@ function normalizeProgramLevel(level: string) {
     "master's program": 'masters',
     'masters program': 'masters',
     'german language program': 'certificate',
+    ausbildung: 'certificate',
     'apprenticeship & job placement': 'certificate',
     'apprenticeship and job placement': 'certificate',
   };

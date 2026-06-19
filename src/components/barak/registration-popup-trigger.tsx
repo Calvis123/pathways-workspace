@@ -37,27 +37,32 @@ const programOptions = [
 ];
 
 const educationSystems = [
-  '844 System',
+  '8-4-4 System (KCSE)',
+  'CBC / Competency-Based Curriculum',
+  'Cambridge International / IGCSE',
   'International Baccalaureate (IB)',
-  'Cambridge Assessment International Education (IGCSE)',
-  'Pearson Edexcel',
 ];
 
 const gradeSections = {
-  '844 System': {
+  '8-4-4 System (KCSE)': {
     page: 2,
-    title: '844 SYSTEM',
-    grades: ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-'],
+    title: '8-4-4 SYSTEM (KCSE)',
+    grades: ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'E'],
   },
-  'Cambridge Assessment International Education (IGCSE)': {
+  'CBC / Competency-Based Curriculum': {
     page: 3,
-    title: 'CAMBRIDGE ASSESSMENT INTERNATIONAL EDUCATION (IGCSE/A LEVELS) SYSTEM',
-    grades: ['A+', 'A-', 'B', 'C', 'D', 'E', 'F', 'G', 'U'],
+    title: 'CBC / COMPETENCY-BASED CURRICULUM',
+    grades: [
+      'Exceeding Expectations (EE)',
+      'Meeting Expectations (ME)',
+      'Approaching Expectations (AE)',
+      'Below Expectations (BE)',
+    ],
   },
-  'Pearson Edexcel': {
+  'Cambridge International / IGCSE': {
     page: 4,
-    title: 'PEARSON EDEXCEL SYSTEM',
-    grades: ['9', '8', '7', '6', '5', '4', '3', '2', '1', 'U'],
+    title: 'CAMBRIDGE INTERNATIONAL / IGCSE',
+    grades: ['A*', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'U'],
   },
   'International Baccalaureate (IB)': {
     page: 5,

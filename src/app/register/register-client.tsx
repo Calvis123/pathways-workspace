@@ -34,7 +34,7 @@ export function RegisterClient() {
           </h1>
 
           <p className="mt-5 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
-            Complete the form and your details will be sent directly to our CRM so the team can follow up with the right next steps.
+            Complete the form and your details will be sent directly to our team so they can follow up with the right next steps.
           </p>
 
           <div className="mt-7 grid max-w-xl gap-3 text-sm font-medium text-slate-700 sm:grid-cols-3">
@@ -55,9 +55,6 @@ export function RegisterClient() {
             <ArrowRight className="h-4 w-4" />
           </button>
 
-          <p className="mt-5 text-sm text-slate-500">
-            Share this page with students: <span className="font-semibold text-slate-700">barakpathways.com/register</span>
-          </p>
         </section>
 
         <section className="order-1 lg:order-2">

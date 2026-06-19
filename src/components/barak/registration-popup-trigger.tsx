@@ -281,9 +281,9 @@ export function RegistrationPopupTrigger({
               </div>
             ) : null}
 
-            <div className="shrink-0 border-b border-[#d6e2f8] bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] p-4 sm:p-5">
-              <div className="grid gap-4 sm:grid-cols-[1fr_190px] sm:items-stretch">
-                <div className="order-2 flex flex-col justify-center px-1 pb-1 sm:order-1 sm:px-3">
+            <div className="shrink-0 overflow-hidden border-b border-[#d6e2f8] bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)]">
+              <div className="grid sm:min-h-60 sm:grid-cols-[1fr_285px]">
+                <div className="order-2 flex flex-col justify-center px-5 py-5 sm:order-1 sm:px-8 sm:py-6">
                   <h3 className="text-xl font-semibold leading-tight text-white sm:text-3xl">
                     Apply for your study abroad pathway.
                   </h3>
@@ -291,12 +291,12 @@ export function RegistrationPopupTrigger({
                     Share your details, education background and preferred program so your application record is captured clearly.
                   </p>
                 </div>
-                <div className="order-1 relative h-32 overflow-hidden rounded-[8px] bg-white/15 shadow-[0_16px_38px_rgba(8,25,54,0.22)] sm:order-2 sm:h-auto">
+                <div className="order-1 relative h-44 overflow-hidden bg-white/15 sm:order-2 sm:h-full">
                   <Image
                     src="/images/registration-hero.png"
                     alt="Students reviewing international study application documents"
                     fill
-                    sizes="(min-width: 640px) 190px, 92vw"
+                    sizes="(min-width: 640px) 285px, 96vw"
                     className="object-cover"
                   />
                 </div>

@@ -384,15 +384,38 @@ export default function Home() {
 
             <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
               {featuredStories.map((story) => (
-                <article key={`${story.name}-${story.country}`} className="rounded-[30px] border border-[#cddbf7] bg-[linear-gradient(180deg,#ffffff_0%,#f8fdff_100%)] p-6 shadow-[0_18px_50px_rgba(31,98,228,0.10)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(79,143,240,0.18)]">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#1f62e4_0%,#4f8ff0_100%)] text-2xl shadow-[0_14px_30px_rgba(31,98,228,0.22)]">
-                    {story.emoji}
+                <article key={`${story.name}-${story.country}`} className="group overflow-hidden rounded-[26px] border border-[#cddbf7] bg-white shadow-[0_18px_50px_rgba(31,98,228,0.10)] transition duration-300 hover:-translate-y-1 hover:border-[#8cb9ff] hover:shadow-[0_24px_70px_rgba(79,143,240,0.18)]">
+                  <div className="relative h-56 overflow-hidden bg-[#dbe7ff]">
+                    <Image
+                      src={story.image}
+                      alt={story.imageAlt}
+                      fill
+                      sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0)_42%,rgba(2,6,23,0.62)_100%)]" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3">
+                      <span className="min-w-0 rounded-full border border-white/20 bg-white/90 px-3 py-1.5 text-xs font-semibold text-slate-900 shadow-sm backdrop-blur">
+                        {story.country}
+                      </span>
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1f62e4] text-lg text-white shadow-[0_12px_24px_rgba(2,6,23,0.24)]">
+                        {story.emoji}
+                      </span>
+                    </div>
                   </div>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">&ldquo;{story.quote}&rdquo;</p>
-                  <div className="mt-6 border-t border-[#e6edf6] pt-4">
-                    <div className="text-sm font-semibold text-slate-900">{story.name}</div>
-                    <div className="mt-1 text-sm text-slate-500">
-                      {story.location} | {story.country}
+                  <div className="flex min-h-[220px] flex-col p-5">
+                    <div className="text-4xl font-serif leading-none text-[#4f8ff0]">&ldquo;</div>
+                    <p className="mt-1 flex-1 text-sm leading-7 text-slate-600">{story.quote}</p>
+                    <div className="mt-5 border-t border-[#e6edf6] pt-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <div>
+                          <div className="text-base font-semibold text-slate-950">{story.name}</div>
+                          <div className="mt-1 text-sm text-slate-500">{story.location}</div>
+                        </div>
+                        <div className="rounded-full bg-[#eef5ff] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#1f62e4]">
+                          Story
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </article>

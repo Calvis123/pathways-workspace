@@ -6,7 +6,6 @@ import { Footer } from '@/components/barak/footer';
 import { Navbar } from '@/components/barak/navbar';
 import { WhatsAppButton } from '@/components/barak/whatsapp-button';
 import { blogPosts } from '@/data/blog';
-import { destinationDetails } from '@/data/destination-details';
 
 export const metadata: Metadata = {
   title: 'Blogs | Barak Pathways',
@@ -16,25 +15,6 @@ export const metadata: Metadata = {
     canonical: '/blogs',
   },
 };
-
-const articleVisuals = [
-  {
-    image: destinationDetails['united-kingdom'].heroImage,
-    alt: destinationDetails['united-kingdom'].heroImageAlt,
-  },
-  {
-    image: destinationDetails.canada.heroImage,
-    alt: destinationDetails.canada.heroImageAlt,
-  },
-  {
-    image: destinationDetails.australia.heroImage,
-    alt: destinationDetails.australia.heroImageAlt,
-  },
-  {
-    image: destinationDetails.malta.heroImage,
-    alt: destinationDetails.malta.heroImageAlt,
-  },
-];
 
 export default function BlogsPage() {
   const visiblePosts = blogPosts.filter((post) => post.slug !== 'scholarships-for-kenyan-students');
@@ -72,9 +52,7 @@ export default function BlogsPage() {
         <section className="py-14 sm:py-18">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-              {visiblePosts.map((post, index) => {
-                const visual = articleVisuals[index % articleVisuals.length];
-
+              {visiblePosts.map((post) => {
                 return (
                   <article
                     key={post.slug}
@@ -82,8 +60,8 @@ export default function BlogsPage() {
                   >
                     <div className="relative h-[220px] overflow-hidden">
                       <Image
-                        src={visual.image}
-                        alt={visual.alt}
+                        src={post.image}
+                        alt={post.imageAlt}
                         fill
                         sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
                         className="object-cover"

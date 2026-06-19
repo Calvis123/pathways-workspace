@@ -2,11 +2,14 @@
 
 import { FormEvent, useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { X } from 'lucide-react';
 
 type RegistrationPopupTriggerProps = {
   label: string;
   className?: string;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  showButton?: boolean;
 };
 
 type EducationSystem = keyof typeof gradeSections;
@@ -17,7 +20,6 @@ const initialForm = {
   lastName: '',
   email: '',
   phone: '',
-  nationality: '',
   program: '',
   educationSystem: '',
   grade: '',
@@ -36,8 +38,6 @@ const programOptions = [
 const educationSystems = [
   '844 System',
   'International Baccalaureate (IB)',
-  'Uganda System',
-  'Tanzania System',
   'Cambridge Assessment International Education (IGCSE)',
   'Pearson Edexcel',
 ];
@@ -63,16 +63,6 @@ const gradeSections = {
     title: 'INTERNATIONAL BACCALAUREATE (IB) SYSTEM',
     grades: ['7', '6', '5', '4', '3', '2', '1'],
   },
-  'Uganda System': {
-    page: 6,
-    title: 'UGANDAN SYSTEM',
-    grades: ['A', 'B', 'C', 'D', 'E', 'O'],
-  },
-  'Tanzania System': {
-    page: 7,
-    title: 'TANZANIAN SYSTEM',
-    grades: ['A+', 'A', 'B', 'C', 'D', 'E'],
-  },
 };
 
 const educationLevels = [
@@ -84,19 +74,42 @@ const educationLevels = [
   'Other',
 ];
 
-export function RegistrationPopupTrigger({ label, className }: RegistrationPopupTriggerProps) {
-  const [open, setOpen] = useState(false);
+function getCurrentStepNumber(step: FormStep, hasGradeStep: boolean) {
+  if (step === 'intro') return 1;
+  if (step === 'grade') return 2;
+  return hasGradeStep ? 3 : 2;
+}
+
+export function RegistrationPopupTrigger({
+  label,
+  className,
+  open: controlledOpen,
+  onOpenChange,
+  showButton = true,
+}: RegistrationPopupTriggerProps) {
+  const [internalOpen, setInternalOpen] = useState(false);
   const [step, setStep] = useState<FormStep>('intro');
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const open = controlledOpen ?? internalOpen;
+
+  const setOpen = (nextOpen: boolean) => {
+    if (onOpenChange) {
+      onOpenChange(nextOpen);
+      return;
+    }
+
+    setInternalOpen(nextOpen);
+  };
 
   const selectedGradeSection = isEducationSystem(form.educationSystem)
     ? gradeSections[form.educationSystem]
     : null;
-  const pageNumber = step === 'intro' ? 1 : step === 'grade' ? selectedGradeSection?.page ?? 2 : 8;
-  const progress = Math.round((pageNumber / 8) * 100);
+  const totalSteps = selectedGradeSection ? 3 : 2;
+  const currentStep = getCurrentStepNumber(step, Boolean(selectedGradeSection));
+  const progress = Math.round((currentStep / totalSteps) * 100);
 
   useEffect(() => {
     if (!success) return;
@@ -109,6 +122,19 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
     }, 1200);
     return () => clearTimeout(timer);
   }, [success]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        handleOpenChange(false);
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open]);
 
   const clearForm = () => {
     setForm(initialForm);
@@ -126,8 +152,8 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
   };
 
   const validateIntro = () => {
-    if (!form.program || !form.firstName || !form.lastName || !form.email || !form.phone || !form.nationality) {
-      setError('Please fill in program, first name, last name, email, phone and nationality.');
+    if (!form.program || !form.firstName || !form.lastName || !form.email || !form.phone) {
+      setError('Please fill in program, first name, last name, email and phone number.');
       return false;
     }
 
@@ -181,9 +207,9 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
           fullName: `${form.firstName} ${form.lastName}`.trim(),
           email: form.email,
           phone: form.phone,
-          country: form.nationality,
+          country: 'Kenya',
           level: form.program,
-          location: form.nationality,
+          location: 'Kenya',
           notes: [
             form.educationSystem ? `Education system: ${form.educationSystem}` : '',
             form.grade ? `Grade attained: ${form.grade}` : '',
@@ -217,50 +243,65 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
 
   return (
     <>
-      <button type="button" className={className} onClick={() => setOpen(true)}>
-        {label}
-      </button>
+      {showButton ? (
+        <button
+          type="button"
+          className={className}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setOpen(true);
+          }}
+        >
+          {label}
+        </button>
+      ) : null}
 
-      <Dialog open={open} onOpenChange={handleOpenChange}>
-        <DialogContent className="max-h-[92vh] w-[95vw] max-w-[760px] overflow-y-auto rounded-[8px] border border-[#dadce0] bg-[#f1f3f4] p-0 font-['Titillium_Web',Arial,sans-serif] shadow-[0_24px_80px_rgba(60,64,67,0.28)]">
-          <DialogHeader className="sr-only">
-            <DialogTitle>Application Form</DialogTitle>
-          </DialogHeader>
+      {open ? (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-slate-950/55 p-3 sm:p-6">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Study abroad application"
+            className="relative flex max-h-[92vh] w-[96vw] max-w-3xl flex-col overflow-hidden rounded-2xl border border-[#d8e4fb] bg-[linear-gradient(180deg,#f7fbff_0%,#eef5ff_100%)] p-0 shadow-[0_34px_100px_rgba(15,42,90,0.28)]"
+          >
+            <button
+              type="button"
+              onClick={() => handleOpenChange(false)}
+              className="absolute right-4 top-4 z-40 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#0f3a78] shadow-sm transition hover:bg-white"
+              aria-label="Close application form"
+            >
+              <X className="h-4 w-4" />
+            </button>
 
-          <div className="p-4 sm:p-6">
-            <div className="mb-5 h-32 rounded-[8px] bg-[url('/images/hero-bg-v2.jpg')] bg-cover bg-center sm:h-40" />
-
-            <div className="overflow-hidden rounded-[8px] border border-[#dadce0] bg-white">
-              <div className="h-3 bg-[#f8c43b]" />
-              <div className="px-6 py-6">
-                <h3 className="text-3xl font-bold text-[#202124] sm:text-4xl">Application Form</h3>
-                {step === 'intro' ? (
-                  <>
-                    <p className="mt-4 text-sm leading-6 text-[#3c4043]">
-                      Our team of experienced education consultants provides personalized guidance to help you through every step of the admissions process. From choosing the right program to preparing your application, we are here to support you every step of the way.
-                    </p>
-                    <p className="mt-5 border-t border-[#e0e0e0] pt-3 text-xs text-[#d93025]">
-                      * Indicates required question
-                    </p>
-                  </>
-                ) : null}
+            {success ? (
+              <div className="pointer-events-none absolute left-1/2 top-4 z-30 w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 rounded-xl border border-[#f2df9a] bg-[linear-gradient(120deg,#fff9e8_0%,#f4f8ff_100%)] px-4 py-3 text-sm font-medium text-[#0f3a78] shadow-[0_16px_40px_rgba(15,58,120,0.2)]">
+                {success}
               </div>
+            ) : null}
+
+            <div className="shrink-0 border-b border-[#d6e2f8] bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] px-5 py-5 sm:px-8 sm:py-6">
+              <h3 className="text-xl font-semibold leading-tight text-white sm:text-3xl">
+                Apply for your study abroad pathway.
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm leading-7 text-[#eaf1ff] sm:text-base">
+                Share your details, education background and preferred program so your application record is captured clearly.
+              </p>
             </div>
-          </div>
 
           <form
             onSubmit={(event: FormEvent<HTMLFormElement>) => event.preventDefault()}
-            className="grid gap-3 px-4 pb-4 sm:px-6 sm:pb-6"
+            className="grid min-h-0 gap-4 overflow-y-auto p-4 sm:p-8 [scrollbar-gutter:stable] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9eb8e8] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-2"
           >
             {step === 'intro' ? (
-              <>
-                <Question label="SELECT A PROGRAM" required>
+              <div className="grid gap-4 rounded-3xl border border-[#d7e3f8] bg-[linear-gradient(180deg,#f8fbff_0%,#f2f7ff_74%,#fff9e9_100%)] p-5 shadow-[0_18px_46px_rgba(19,60,125,0.12)] sm:p-6">
+                <Question label="Program you want to apply for" required>
                   <select
                     value={form.program}
                     onChange={(event) => setForm((current) => ({ ...current, program: event.target.value }))}
-                    className="h-11 w-full border-0 border-b border-[#dadce0] bg-transparent px-0 text-sm text-[#202124] outline-none transition focus:border-[#c06800]"
+                    className="h-12 w-full rounded-xl border border-[#c9d8f3] bg-[#f9fbff] px-4 text-[#0f254b] outline-none transition focus:border-[#1f62e4] focus:ring-2 focus:ring-[#1f62e4]/20"
                   >
-                    <option value="">Choose</option>
+                    <option value="">Select program...</option>
                     {programOptions.map((option) => (
                       <option key={option} value={option}>
                         {option}
@@ -269,51 +310,50 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
                   </select>
                 </Question>
 
-                <Question label="FIRST NAME" required>
+                <div className="grid gap-4 sm:grid-cols-2">
+                <Question label="First name" required>
                   <TextInput
                     value={form.firstName}
                     onChange={(value) => setForm((current) => ({ ...current, firstName: value }))}
+                    placeholder="e.g. Brian"
                   />
                 </Question>
 
-                <Question label="LAST NAME" required>
+                <Question label="Last name" required>
                   <TextInput
                     value={form.lastName}
                     onChange={(value) => setForm((current) => ({ ...current, lastName: value }))}
+                    placeholder="e.g. Otieno"
                   />
                 </Question>
+                </div>
 
-                <Question label="EMAIL" required>
+                <Question label="Email address" required>
                   <TextInput
                     type="email"
                     value={form.email}
                     onChange={(value) => setForm((current) => ({ ...current, email: value }))}
+                    placeholder="you@example.com"
                   />
                 </Question>
 
-                <Question label="PHONE" required>
+                <Question label="Phone number" required>
                   <TextInput
                     value={form.phone}
                     onChange={(value) => setForm((current) => ({ ...current, phone: value }))}
+                    placeholder="+254 7XX XXX XXX"
                   />
                 </Question>
 
-                <Question label="NATIONALITY" helper="i.e. Kenya, Tanzania, etc." required>
-                  <TextInput
-                    value={form.nationality}
-                    onChange={(value) => setForm((current) => ({ ...current, nationality: value }))}
-                  />
-                </Question>
-
-                <Question label="EDUCATION SYSTEM">
+                <Question label="Education system" helper="Select this only if you already know the system your certificate follows.">
                   <select
                     value={form.educationSystem}
                     onChange={(event) =>
                       setForm((current) => ({ ...current, educationSystem: event.target.value, grade: '' }))
                     }
-                    className="h-11 w-full border-0 border-b border-[#dadce0] bg-transparent px-0 text-sm text-[#202124] outline-none transition focus:border-[#c06800]"
+                    className="h-12 w-full rounded-xl border border-[#c9d8f3] bg-[#f9fbff] px-4 text-[#0f254b] outline-none transition focus:border-[#1f62e4] focus:ring-2 focus:ring-[#1f62e4]/20"
                   >
-                    <option value="">Choose</option>
+                    <option value="">Select if applicable...</option>
                     {educationSystems.map((option) => (
                       <option key={option} value={option}>
                         {option}
@@ -321,21 +361,21 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
                     ))}
                   </select>
                 </Question>
-              </>
+              </div>
             ) : null}
 
             {step === 'grade' && selectedGradeSection ? (
               <SectionCard title={selectedGradeSection.title}>
                 <fieldset>
-                  <legend className="mb-6 text-lg font-bold text-[#202124]">Grade Attained</legend>
-                  <div className="grid gap-5">
+                  <legend className="mb-6 text-lg font-semibold text-[#0f254b]">Select your grade attained</legend>
+                  <div className="grid gap-3 sm:grid-cols-2">
                     {selectedGradeSection.grades.map((grade) => (
-                      <label key={grade} className="flex cursor-pointer items-center gap-4 text-base text-[#202124]">
+                      <label key={grade} className="flex cursor-pointer items-center gap-4 rounded-xl border border-[#d7e3f8] bg-[#f9fbff] px-4 py-3 text-base font-medium text-[#0f254b] transition hover:border-[#1f62e4]">
                         <input
                           type="checkbox"
                           checked={form.grade === grade}
                           onChange={() => setForm((current) => ({ ...current, grade: current.grade === grade ? '' : grade }))}
-                          className="h-7 w-7 appearance-none rounded-[3px] border-[3px] border-[#5f6368] bg-white transition checked:border-[#c06800] checked:bg-[#f8c43b]"
+                          className="h-5 w-5 appearance-none rounded border-2 border-[#7d92bc] bg-white transition checked:border-[#1f62e4] checked:bg-[#1f62e4]"
                         />
                         <span>{grade}</span>
                       </label>
@@ -346,15 +386,15 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
             ) : null}
 
             {step === 'final' ? (
-              <>
+              <div className="grid gap-4 rounded-3xl border border-[#d7e3f8] bg-[linear-gradient(180deg,#f8fbff_0%,#f2f7ff_74%,#fff9e9_100%)] p-5 shadow-[0_18px_46px_rgba(19,60,125,0.12)] sm:p-6">
                 <SectionCard title="FINAL">
-                  <Question label="HIGHEST LEVEL OF EDUCATION" nested>
+                  <Question label="Highest level of education" nested>
                     <select
                       value={form.highestEducation}
                       onChange={(event) => setForm((current) => ({ ...current, highestEducation: event.target.value }))}
-                      className="h-14 w-full max-w-64 rounded-[4px] border border-[#dadce0] bg-white px-5 text-base text-[#5f6368] outline-none transition focus:border-[#c06800]"
+                      className="h-12 w-full rounded-xl border border-[#c9d8f3] bg-[#f9fbff] px-4 text-[#0f254b] outline-none transition focus:border-[#1f62e4] focus:ring-2 focus:ring-[#1f62e4]/20"
                     >
-                      <option value="">Choose</option>
+                      <option value="">Select level...</option>
                       {educationLevels.map((option) => (
                         <option key={option} value={option}>
                           {option}
@@ -364,15 +404,15 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
                   </Question>
                 </SectionCard>
 
-                <Question label="MESSAGE">
+                <Question label="Anything else we should know?">
                   <textarea
                     value={form.message}
                     onChange={(event) => setForm((current) => ({ ...current, message: event.target.value }))}
-                    placeholder="Your answer"
-                    className="min-h-24 w-full resize-y border-0 border-b border-[#dadce0] bg-transparent px-0 py-2 text-sm text-[#202124] outline-none transition placeholder:text-[#70757a] focus:border-[#c06800]"
+                    placeholder="Mention your preferred country, intake, budget range, or course if you already know it."
+                    className="min-h-24 w-full resize-y rounded-xl border border-[#c9d8f3] bg-[#f9fbff] px-4 py-3 text-[#0f254b] placeholder:text-[#7d92bc] outline-none transition focus:border-[#1f62e4] focus:ring-2 focus:ring-[#1f62e4]/20"
                   />
                 </Question>
-              </>
+              </div>
             ) : null}
 
             {error ? (
@@ -392,7 +432,7 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
                   <button
                     type="button"
                     onClick={goBack}
-                    className="inline-flex h-11 min-w-24 items-center justify-center rounded-[4px] border border-[#dadce0] bg-white px-6 text-base font-bold text-[#c06800] shadow-[0_1px_3px_rgba(60,64,67,0.25)] transition hover:bg-[#f8f9fa]"
+                    className="inline-flex h-11 min-w-24 items-center justify-center rounded-xl border border-[#c9d8f3] bg-white px-6 text-base font-semibold text-[#1f62e4] shadow-sm transition hover:bg-[#eef5ff]"
                   >
                     Back
                   </button>
@@ -401,7 +441,7 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
                   <button
                     type="button"
                     onClick={goNext}
-                    className="inline-flex h-11 min-w-24 items-center justify-center rounded-[4px] border border-[#dadce0] bg-white px-6 text-base font-bold text-[#c06800] shadow-[0_1px_3px_rgba(60,64,67,0.25)] transition hover:bg-[#f8f9fa]"
+                    className="inline-flex h-11 min-w-24 items-center justify-center rounded-xl bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] px-6 text-base font-semibold text-white shadow-[0_14px_30px_rgba(31,98,228,0.28)] transition hover:-translate-y-0.5"
                   >
                     Next
                   </button>
@@ -410,34 +450,33 @@ export function RegistrationPopupTrigger({ label, className }: RegistrationPopup
                     type="button"
                     onClick={handleSubmit}
                     disabled={isSubmitting}
-                    className="inline-flex h-11 min-w-32 items-center justify-center rounded-[4px] bg-[#c76b00] px-6 text-base font-bold text-white shadow-[0_1px_3px_rgba(192,104,0,0.28)] transition hover:bg-[#b76000] disabled:cursor-not-allowed disabled:opacity-60"
+                    className="inline-flex h-11 min-w-32 items-center justify-center rounded-xl bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] px-6 text-base font-semibold text-white shadow-[0_14px_30px_rgba(31,98,228,0.35)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-65 disabled:hover:translate-y-0"
                   >
                     {isSubmitting ? 'Submitting...' : 'Apply Now'}
                   </button>
                 )}
               </div>
               <div className="flex min-w-52 flex-1 items-center gap-4">
-                <div className="h-3 flex-1 overflow-hidden rounded-full bg-[#70757a]">
+                <div className="h-2 flex-1 overflow-hidden rounded-full bg-[#cad8f2]">
                   <div
-                    className={`h-full rounded-full ${step === 'final' ? 'bg-[#34a853]' : 'bg-[#80a7f5]'}`}
+                    className="h-full rounded-full bg-[#1f62e4]"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
-                <span className="whitespace-nowrap text-base text-[#202124]">Page {pageNumber} of 8</span>
+                <span className="whitespace-nowrap text-sm font-medium text-[#426291]">Step {currentStep} of {totalSteps}</span>
               </div>
               <button
                 type="button"
                 onClick={clearForm}
-                className="h-10 px-2 text-base font-bold text-[#c06800] transition hover:text-[#8c4b00]"
+                className="h-10 px-2 text-sm font-semibold text-[#1f62e4] transition hover:text-[#174fbf]"
               >
-                Clear form
+                Clear
               </button>
             </div>
-
-            <p className="pb-2 text-sm text-[#3c4043]">Never submit passwords through this form.</p>
           </form>
-        </DialogContent>
-      </Dialog>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }
@@ -460,23 +499,25 @@ function Question({
       className={
         nested
           ? ''
-          : 'rounded-[8px] border border-[#dadce0] bg-white px-6 py-5 shadow-[0_1px_2px_rgba(60,64,67,0.08)] focus-within:border-l-4 focus-within:border-l-[#c06800]'
+          : 'rounded-2xl border border-[#d7e3f8] bg-white/82 px-5 py-4 shadow-[0_10px_26px_rgba(19,60,125,0.08)]'
       }
     >
-      <label className="block text-sm font-bold text-[#202124]">
+      <label className="block text-sm font-semibold text-[#0f254b]">
         {label} {required ? <span className="text-[#d93025]">*</span> : null}
       </label>
-      {helper ? <p className="mt-1 text-xs text-[#5f6368]">{helper}</p> : null}
-      <div className="mt-4">{children}</div>
+      {helper ? <p className="mt-1 text-xs leading-5 text-[#6b84ad]">{helper}</p> : null}
+      <div className="mt-3">{children}</div>
     </div>
   );
 }
 
 function SectionCard({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="overflow-hidden rounded-[8px] border border-[#dadce0] bg-white shadow-[0_1px_2px_rgba(60,64,67,0.08)]">
-      <div className="bg-[#f8c43b] px-6 py-5 text-base font-bold uppercase text-[#111827]">{title}</div>
-      <div className="px-6 py-8">{children}</div>
+    <section className="overflow-hidden rounded-3xl border border-[#d7e3f8] bg-white shadow-[0_18px_46px_rgba(19,60,125,0.12)]">
+      <div className="border-b border-[#d6e2f8] bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] px-6 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-white">
+        {title}
+      </div>
+      <div className="px-5 py-6 sm:px-6">{children}</div>
     </section>
   );
 }
@@ -485,18 +526,20 @@ function TextInput({
   type = 'text',
   value,
   onChange,
+  placeholder = 'Your answer',
 }: {
   type?: string;
   value: string;
   onChange: (value: string) => void;
+  placeholder?: string;
 }) {
   return (
     <input
       type={type}
       value={value}
       onChange={(event) => onChange(event.target.value)}
-      placeholder="Your answer"
-      className="h-11 w-full border-0 border-b border-[#dadce0] bg-transparent px-0 text-sm text-[#202124] outline-none transition placeholder:text-[#70757a] focus:border-[#c06800]"
+      placeholder={placeholder}
+      className="h-12 w-full rounded-xl border border-[#c9d8f3] bg-[#f9fbff] px-4 text-[#0f254b] placeholder:text-[#7d92bc] outline-none transition focus:border-[#1f62e4] focus:ring-2 focus:ring-[#1f62e4]/20"
     />
   );
 }

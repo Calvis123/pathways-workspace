@@ -2,13 +2,16 @@
 
 import Link from 'next/link';
 import { FormEvent, useEffect, useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { X } from 'lucide-react';
 import { countries } from '@/data/countries';
 
 type ConsultationPopupTriggerProps = {
   label: string;
   className?: string;
   withArrow?: boolean;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  showButton?: boolean;
 };
 
 const studyLevels = [
@@ -35,18 +38,44 @@ export function ConsultationPopupTrigger({
   label,
   className,
   withArrow = false,
+  open: controlledOpen,
+  onOpenChange,
+  showButton = true,
 }: ConsultationPopupTriggerProps) {
-  const [open, setOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const open = controlledOpen ?? internalOpen;
+
+  const setOpen = (nextOpen: boolean) => {
+    if (onOpenChange) {
+      onOpenChange(nextOpen);
+      return;
+    }
+
+    setInternalOpen(nextOpen);
+  };
 
   useEffect(() => {
     if (!success) return;
     const timer = setTimeout(() => setSuccess(''), 3500);
     return () => clearTimeout(timer);
   }, [success]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -98,18 +127,38 @@ export function ConsultationPopupTrigger({
 
   return (
     <>
-      <button type="button" className={className} onClick={() => setOpen(true)}>
-        {label}
-        {withArrow ? <span className="ml-2">-&gt;</span> : null}
-      </button>
+      {showButton ? (
+        <button
+          type="button"
+          className={className}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setOpen(true);
+          }}
+        >
+          {label}
+          {withArrow ? <span className="ml-2">-&gt;</span> : null}
+        </button>
+      ) : null}
 
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="w-[96vw] max-w-3xl max-h-[92vh] overflow-hidden rounded-2xl border border-[#d8e4fb] bg-[linear-gradient(180deg,#f7fbff_0%,#eef5ff_100%)] p-0 shadow-[0_34px_100px_rgba(15,42,90,0.28)]">
-          <DialogHeader className="sr-only">
-            <DialogTitle>Free Consultation Form</DialogTitle>
-          </DialogHeader>
+      {open ? (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-slate-950/55 p-3 sm:p-6">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Free consultation form"
+            className="relative flex max-h-[92vh] w-[96vw] max-w-3xl flex-col overflow-hidden rounded-2xl border border-[#d8e4fb] bg-[linear-gradient(180deg,#f7fbff_0%,#eef5ff_100%)] p-0 shadow-[0_34px_100px_rgba(15,42,90,0.28)]"
+          >
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="absolute right-4 top-4 z-40 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#0f3a78] shadow-sm transition hover:bg-white"
+              aria-label="Close consultation form"
+            >
+              <X className="h-4 w-4" />
+            </button>
 
-          <div className="relative flex max-h-[92vh] flex-col">
             {success ? (
               <div className="pointer-events-none absolute left-1/2 top-4 z-30 w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 rounded-xl border border-[#f2df9a] bg-[linear-gradient(120deg,#fff9e8_0%,#f4f8ff_100%)] px-4 py-3 text-sm font-medium text-[#0f3a78] shadow-[0_16px_40px_rgba(15,58,120,0.2)]">
                 {success}
@@ -235,7 +284,7 @@ export function ConsultationPopupTrigger({
 
                 <div>
                   <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-[#426291]">
-                    Start Your Journey
+                    Study goals
                   </label>
                   <textarea
                     value={form.inquiry}
@@ -252,7 +301,7 @@ export function ConsultationPopupTrigger({
                   disabled={isSubmitting}
                   className="mt-2 inline-flex h-12 items-center justify-center rounded-xl border border-[#f2df9a] bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] px-6 text-base font-semibold text-white shadow-[0_14px_30px_rgba(31,98,228,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(31,98,228,0.42)] disabled:cursor-not-allowed disabled:opacity-65 disabled:hover:translate-y-0"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Start Your Journey'}
+                  {isSubmitting ? 'Submitting...' : 'Send request'}
                 </button>
 
                 <div className="mt-1 flex items-center gap-3">
@@ -278,8 +327,8 @@ export function ConsultationPopupTrigger({
               </form>
             </div>
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      ) : null}
     </>
   );
 }

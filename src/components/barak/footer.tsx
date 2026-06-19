@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Facebook, Instagram, Mail, Phone } from 'lucide-react';
-import { ConsultationPopupTrigger } from '@/components/barak/consultation-popup-trigger';
 
 const studyLinks = [
   { label: 'Explore destinations', href: '/#destinations' },
@@ -71,11 +70,6 @@ export function Footer() {
                 Destination matching, application support, IELTS guidance and visa-readiness planning for students across Kenya.
               </p>
             </div>
-
-            <ConsultationPopupTrigger
-              label="Start Your Journey"
-              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#eef1f5_0%,#dde5ef_100%)] px-6 text-sm font-semibold text-slate-950 shadow-[0_14px_34px_rgba(79,143,240,0.22)] transition hover:-translate-y-0.5 hover:bg-[#dde5ef] sm:w-auto"
-            />
           </div>
         </div>
 

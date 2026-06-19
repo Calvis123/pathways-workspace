@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { blogPosts } from '@/data/blog';
@@ -21,6 +22,7 @@ const categoryColors: Record<string, string> = {
   IELTS: 'bg-green-50 text-green-700',
   'Visa Guide': 'bg-orange-50 text-orange-700',
   Guidance: 'bg-brand-light text-brand-dark',
+  Scholarships: 'bg-yellow-50 text-yellow-800',
 };
 
 export function BlogSection() {
@@ -44,6 +46,15 @@ export function BlogSection() {
             <motion.div key={bp.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-shadow rounded-xl border-gray-100">
                 <div className="h-1 bg-brand-blue rounded-t-xl" />
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={bp.image}
+                    alt={bp.imageAlt}
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
                 <CardContent className="p-5 flex-1 flex flex-col">
                   <div className="flex items-center gap-2 mb-3">
                     <Badge className={`text-xs px-2 py-0.5 rounded-full ${categoryColors[bp.category] || 'bg-gray-100 text-gray-600'}`}>

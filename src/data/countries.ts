@@ -250,6 +250,48 @@ export const countries: Country[] = [
     ],
   },
   {
+    slug: "germany",
+    name: "Germany",
+    flag: "\uD83C\uDDE9\uD83C\uDDEA",
+    tagline: "Affordable European education with strong career pathways",
+    description:
+      "Germany is one of Europe's leading destinations for international students, attracting more than 400,000 students from around the world. It is known for high-quality education, strong research institutions, affordable public universities, and excellent employment opportunities in technical and professional fields.",
+    universities: [
+      "Technical University of Munich",
+      "RWTH Aachen University",
+      "Heidelberg University",
+      "Humboldt University of Berlin",
+    ],
+    whyStudy: [
+      "Most public universities charge no tuition fees",
+      "More than 2,000 English-taught programs",
+      "Strong economy with high demand for skilled graduates",
+      "Excellent for engineering, IT, healthcare and renewable energy",
+      "Post-study residence pathway for job search",
+    ],
+    visaRequirements: [
+      "Valid passport",
+      "University admission letter",
+      "Academic certificates and transcripts",
+      "Health insurance",
+      "Proof of finances, often through a blocked account",
+    ],
+    costOfLiving: "KSh 135K - 180K/month",
+    scholarships: [
+      "DAAD Scholarships",
+      "Deutschlandstipendium",
+      "University-specific scholarships",
+      "Erasmus+ Scholarships",
+    ],
+    testimonials: [
+      {
+        quote: "Germany gave me access to affordable education and strong engineering opportunities.",
+        name: "Brian",
+        location: "Nairobi",
+      },
+    ],
+  },
+  {
     slug: "new-zealand",
     name: "New Zealand",
     flag: "\uD83C\uDDF3\uD83C\uDDFF",

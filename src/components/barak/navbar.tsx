@@ -3,18 +3,11 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Menu, Phone, ChevronDown, Sparkles } from 'lucide-react';
+import { Menu, ChevronDown, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { countries } from '@/data/countries';
 import { getDestinationPath } from '@/lib/destination-utils';
-import { ConsultationPopupTrigger } from '@/components/barak/consultation-popup-trigger';
 import { RegistrationPopupTrigger } from '@/components/barak/registration-popup-trigger';
 
 const navLinks = [
@@ -24,10 +17,17 @@ const navLinks = [
   { label: 'Contact us', href: '/contact-us' },
 ];
 
+const desktopActionClass =
+  'hidden h-11 cursor-pointer items-center justify-center whitespace-nowrap rounded-full bg-[linear-gradient(135deg,#eef1f5_0%,#dde5ef_100%)] px-5 text-sm font-semibold text-slate-950 shadow-[0_14px_34px_rgba(79,143,240,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(79,143,240,0.28)] focus:outline-none focus:ring-2 focus:ring-[#1f62e4]/30 sm:inline-flex';
+
+const mobileActionClass =
+  'inline-flex h-12 cursor-pointer items-center justify-center rounded-full bg-[linear-gradient(135deg,#1f62e4_0%,#4f8ff0_100%)] px-5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(31,98,228,0.18)] focus:outline-none focus:ring-2 focus:ring-[#1f62e4]/30';
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileDestinationsOpen, setMobileDestinationsOpen] = useState(false);
+  const [registrationOpen, setRegistrationOpen] = useState(false);
   const mobileOpenRef = useRef(false);
 
   useEffect(() => {
@@ -54,6 +54,15 @@ export function Navbar() {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const openRegistration = () => {
+    setRegistrationOpen(true);
+  };
+
+  const openRegistrationFromMobile = () => {
+    setMobileOpen(false);
+    window.setTimeout(openRegistration, 180);
+  };
 
   return (
     <header className="sticky top-0 z-50">
@@ -98,24 +107,28 @@ export function Navbar() {
           <nav className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) =>
               link.dropdown ? (
-                <DropdownMenu key={link.label}>
-                  <DropdownMenuTrigger asChild>
-                    <button className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-[#eef2f8] hover:text-[#1f62e4]">
-                      {link.label}
-                      <ChevronDown className="h-4 w-4" />
-                    </button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="center" className="w-64 rounded-2xl border border-[#cddbf7] p-2 shadow-[0_18px_45px_rgba(31,98,228,0.12)]">
+                <div key={link.label} className="group relative">
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-[#eef2f8] hover:text-[#1f62e4] focus:bg-[#eef2f8] focus:text-[#1f62e4] focus:outline-none"
+                  >
+                    <span>{link.label}</span>
+                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
+                  </button>
+                  <div className="invisible absolute left-1/2 top-full z-[80] mt-3 w-72 -translate-x-1/2 rounded-2xl border border-[#cddbf7] bg-white p-2 opacity-0 shadow-[0_18px_45px_rgba(31,98,228,0.12)] transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                    <div className="absolute -top-3 left-0 h-3 w-full" />
                     {countries.map((country) => (
-                      <DropdownMenuItem key={country.slug} asChild>
-                        <Link href={getDestinationPath(country.slug)} className="cursor-pointer rounded-xl">
-                          <span className="mr-2">{country.flag}</span>
-                          {country.name}
-                        </Link>
-                      </DropdownMenuItem>
+                      <Link
+                        key={country.slug}
+                        href={getDestinationPath(country.slug)}
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-[#eef5ff] hover:text-[#1f62e4] focus:bg-[#eef5ff] focus:text-[#1f62e4] focus:outline-none"
+                      >
+                        <span className="text-base">{country.flag}</span>
+                        <span>{country.name}</span>
+                      </Link>
                     ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                  </div>
+                </div>
               ) : (
                 <Link
                   key={link.label}
@@ -128,18 +141,13 @@ export function Navbar() {
             )}
           </nav>
 
-          <div className="flex items-center gap-3">
-            <RegistrationPopupTrigger
-              label="Apply Now"
-              className="hidden h-11 items-center rounded-full border border-[#cddbf7] bg-white px-5 text-sm font-semibold text-[#1f62e4] shadow-[0_10px_24px_rgba(31,98,228,0.1)] transition hover:-translate-y-0.5 hover:bg-[#eef5ff] sm:inline-flex"
-            />
-
-            <ConsultationPopupTrigger
-              label="Start your Journey"
-              className="hidden h-11 items-center rounded-full bg-[linear-gradient(135deg,#eef1f5_0%,#dde5ef_100%)] px-5 text-sm font-semibold text-slate-950 shadow-[0_14px_34px_rgba(79,143,240,0.24)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(79,143,240,0.28)] sm:inline-flex"
-            />
+          <div className="relative z-10 flex items-center gap-3">
+            <button type="button" onClick={openRegistration} className={desktopActionClass}>
+              Apply Now
+            </button>
 
             <Sheet
+              modal={false}
               open={mobileOpen}
               onOpenChange={(open) => {
                 setMobileOpen(open);
@@ -235,14 +243,9 @@ export function Navbar() {
                       ))}
                   </div>
 
-                  <ConsultationPopupTrigger
-                    label="Start your Journey"
-                    className="mt-5 inline-flex h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1f62e4_0%,#4f8ff0_100%)] px-5 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(31,98,228,0.18)]"
-                  />
-                  <RegistrationPopupTrigger
-                    label="Apply Now"
-                    className="mt-3 inline-flex h-12 items-center justify-center rounded-full border border-[#cddbf7] bg-white px-5 text-sm font-semibold text-[#1f62e4] shadow-[0_14px_34px_rgba(31,98,228,0.1)]"
-                  />
+                  <button type="button" onClick={openRegistrationFromMobile} className={`mt-3 ${mobileActionClass}`}>
+                    Apply Now
+                  </button>
 
                   <p className="mt-3 text-center text-xs leading-5 text-slate-500">
                     The menu closes automatically as soon as you continue scrolling.
@@ -253,6 +256,13 @@ export function Navbar() {
           </div>
         </div>
       </div>
+
+      <RegistrationPopupTrigger
+        label="Apply Now"
+        open={registrationOpen}
+        onOpenChange={setRegistrationOpen}
+        showButton={false}
+      />
     </header>
   );
 }

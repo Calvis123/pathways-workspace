@@ -1,17 +1,10 @@
 'use client';
 
 import { processSteps } from '@/data/site-data';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 
 export function HowItWorks() {
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section id="how-it-works" className="py-20 bg-brand-light/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,23 +100,6 @@ export function HowItWorks() {
             })}
           </div>
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <Button
-            onClick={() => scrollTo('#contact')}
-            size="lg"
-            className="bg-brand-blue hover:bg-brand-dark text-white font-semibold rounded-full px-8 shadow-lg"
-          >
-            Start Your Journey
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

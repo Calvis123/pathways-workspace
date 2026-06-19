@@ -5,6 +5,8 @@ export interface BlogPost {
   category: string;
   readTime: string;
   date: string;
+  image: string;
+  imageAlt: string;
   content: string;
 }
 
@@ -17,6 +19,8 @@ export const blogPosts: BlogPost[] = [
     category: "Guides",
     readTime: "8 min read",
     date: "April 2, 2026",
+    image: "/images/blogs/choose-right-country.png",
+    imageAlt: "Kenyan student comparing international study destination options at a desk",
     content: `Choosing where to study abroad is a major decision, and the best choice depends on your goals, career plan, budget, learning style, and the life you want while studying.
 
 ## 1. Define Your Goals First
@@ -103,6 +107,8 @@ Instead, you should choose the country that offers the best balance between affo
     category: "IELTS",
     readTime: "10 min read",
     date: "March 30, 2026",
+    image: "/images/blogs/ielts-band-7.png",
+    imageAlt: "Kenyan student preparing for an English language exam with headphones and study notes",
     content: `Achieving a Band 7+ in IELTS is not just about knowing English—it’s about understanding the exam, applying the right strategies, and avoiding common mistakes. Many students already have the ability but lose marks because they don’t approach the test correctly. The following points explain how to improve your performance in each area.
 
 ## 1. Understand the IELTS Test Format
@@ -200,6 +206,8 @@ Remember that IELTS is not testing perfection—it is testing your ability to co
     category: "Visa Guide",
     readTime: "7 min read",
     date: "March 28, 2026",
+    image: "/images/blogs/uk-student-visa-2026.png",
+    imageAlt: "Kenyan student reviewing UK student visa documents with an advisor",
     content: `Applying for a UK student visa in 2026 is not just about filling a form—it is a structured process with strict rules, and even small mistakes can lead to delays or rejection. To succeed, you need to clearly understand each requirement and why it matters.
 
 ## 1. Meet the Basic Eligibility Requirements
@@ -275,6 +283,242 @@ With a UK student visa, you can study full-time and usually work part-time durin
 This is important because your visa is not just for studying—it can also shape your career opportunities after graduation.`,
   },
   {
+    slug: "study-in-germany-smart-choice",
+    title: "Why Germany Continues to Attract Thousands of International Students Every Year",
+    excerpt:
+      "Germany blends academic excellence, industry connections, affordability, and student life in a way that keeps attracting ambitious learners from around the world.",
+    category: "Destinations",
+    readTime: "8 min read",
+    date: "June 18, 2026",
+    image: "/images/blogs/study-in-germany.png",
+    imageAlt: "Kenyan international student walking through a modern German university campus",
+    content: `For many students dreaming of studying abroad, Germany may not always be the first country that comes to mind. Yet, year after year, it quietly remains one of the most sought-after destinations for higher education. From historic university towns to bustling innovation hubs, Germany offers much more than just a degree. It provides an experience that shapes careers and broadens perspectives.
+
+Imagine attending lectures in a centuries-old institution in Heidelberg, spending weekends exploring museums in Berlin, or working on cutting-edge engineering projects in Munich. Studying in Germany means becoming part of a country that values knowledge, innovation, and practical skills.
+
+## Education Connected to Industry
+
+One of Germany's greatest strengths lies in its connection between education and industry. Students often find themselves learning from professors who collaborate with global companies, conducting research that addresses real-world challenges, or participating in internships that open doors to future employment.
+
+This hands-on approach ensures that graduates leave university not only with theoretical knowledge but also with experience that employers value.
+
+## Life Beyond the Classroom
+
+Beyond academics, Germany offers a high quality of life. Public transportation is efficient, cities are generally safe, and there are countless opportunities to travel and experience different cultures.
+
+Whether enjoying Christmas markets in winter, hiking through the Bavarian Alps, or visiting castles along the Rhine River, students quickly discover that Germany is a country rich in history and tradition.
+
+## A Country That Values International Talent
+
+Another appealing aspect is the country's welcoming attitude toward international talent. Germany recognizes the contribution international graduates make to its economy and has created pathways that allow students to remain in the country and pursue professional careers after completing their studies.
+
+This is particularly attractive for students interested in fields such as technology, healthcare, engineering, and business, where skilled professionals are in high demand.
+
+## Growing Through the Challenges
+
+Of course, adapting to life in a new country comes with challenges. Learning basic German phrases, understanding cultural differences, and adjusting to a different style of teaching can take time.
+
+However, many international students find that these experiences help them become more independent, confident, and adaptable. These are qualities that are valuable far beyond the classroom.
+
+## The Balance That Makes Germany Stand Out
+
+Perhaps what makes Germany truly unique is the balance it offers. It combines academic excellence with affordability, modern innovation with historical charm, and professional opportunities with a vibrant student lifestyle.
+
+It is a place where students can pursue ambitious goals while experiencing life in one of Europe's most influential nations.
+
+## Final Thoughts
+
+For students seeking more than just a university education, Germany represents an opportunity to invest in personal growth, gain international exposure, and prepare for a future in an increasingly globalized world. The journey may begin with a university application, but for many, it becomes the start of a life-changing adventure.`,
+  },
+  {
+    slug: "study-abroad-document-checklist-kenyan-students-2026",
+    title: "Study Abroad Document Checklist for Kenyan Students in 2026",
+    excerpt:
+      "A practical checklist to help Kenyan students prepare academic records, financial evidence, visa documents, and application materials before deadlines get tight.",
+    category: "Guides",
+    readTime: "9 min read",
+    date: "June 18, 2026",
+    image: "/images/blogs/document-checklist-kenyan-students.png",
+    imageAlt: "Kenyan student organizing study abroad application documents in a counselling office",
+    content: `Applying to study abroad is easier when your documents are ready before the university or visa office asks for them. Many delays happen because a student has the right goal but starts collecting evidence too late.
+
+For Kenyan students, the best approach is to prepare documents in stages: identity documents first, academic records next, then admission evidence, financial documents, and visa-specific requirements.
+
+## 1. Start With Identity Documents
+
+Your passport should be valid, clear, and consistent with the names used on your academic documents. If your name appears differently on your KCSE certificate, passport, birth certificate, or national ID, ask for guidance early because small inconsistencies can slow down admissions and visa processing.
+
+You should prepare:
+
+- A valid passport
+- National ID or birth certificate where required
+- Passport-size photos that match current visa photo rules
+- Copies of previous visas or travel history if applicable
+
+Do not wait until you receive an offer to check your passport. Some students lose valuable intake time because renewal takes longer than expected.
+
+## 2. Organize Academic Records
+
+Universities usually need evidence of your previous education before they can issue an offer. For Kenyan students, this may include KCSE results, high school transcripts, diploma transcripts, degree transcripts, certificates, recommendation letters, and grading explanations.
+
+Keep scanned copies clear and properly named. A file called "KCSE-certificate-Brian-Otieno.pdf" is easier to manage than a random phone scan. Good organization also helps your counsellor or university advisor review your application faster.
+
+## 3. Prepare English Language Evidence
+
+Depending on the country, university, and course, you may need IELTS, TOEFL, PTE, or proof that your previous education was taught in English. Do not assume that every university will waive English testing automatically.
+
+If your target course has competitive entry, a strong English score can support both admission and visa confidence. Start early enough to allow time for a retake if your first score is below the requirement.
+
+## 4. Understand Admission Documents
+
+After you apply, the university may issue a conditional offer, unconditional offer, or admission letter. Some countries then require a specific document before visa application.
+
+For example, UK Student visa applicants need a Confirmation of Acceptance for Studies from their course provider. Canada study permit applicants normally need a letter of acceptance, and many post-secondary applicants also need a provincial or territorial attestation letter from their school.
+
+These documents are not just formalities. They connect your admission to the visa process, so the details must match your passport, course, fees, and intake.
+
+## 5. Build Financial Evidence Early
+
+Financial evidence is one of the most sensitive parts of a study abroad application. The goal is to show that you can pay tuition and support yourself without relying on uncertain future income.
+
+Prepare documents such as:
+
+- Bank statements
+- Sponsor letters
+- Sponsor employment or business evidence
+- Fee payment receipts
+- Scholarship letters
+- Loan approval letters where accepted
+
+For the UK, official guidance says students must show enough money for course fees and living costs, with living-cost amounts depending on whether the course is in London or outside London. Canada also requires proof of funds for the student and any accompanying family members.
+
+## 6. Check Health and Country-Specific Requirements
+
+Some visa routes require medical checks, TB testing, biometrics, police certificates, or additional country-specific forms. For example, UK Student visa applicants may need TB test results, while Canada notes that some students may need a medical exam or police certificate depending on their situation.
+
+Because these requirements can depend on your country, course, travel history, and length of stay, confirm them early. Medical appointments and certificates can take time, especially close to peak intake periods.
+
+## 7. Keep a Personal Application Folder
+
+Create one folder for each destination or university. Inside it, separate documents into academic, identity, finance, visa, and communication files. Keep both original files and PDF copies.
+
+This makes it easier to respond quickly when a university asks for an updated transcript, when a visa portal asks for financial proof, or when your counsellor needs to review your file.
+
+## 8. Avoid Last-Minute Document Editing
+
+Rushed documents create mistakes. Students often upload unclear scans, expired passports, incomplete bank statements, missing signatures, or letters with mismatched names.
+
+Before submitting anything, check:
+
+- Names match your passport
+- Dates are correct
+- Scans are readable
+- Documents are complete
+- Translations are certified where required
+- Financial documents cover the required period
+
+One careful review can prevent weeks of delay.
+
+## Final Thoughts
+
+The strongest applications are not always the ones submitted fastest. They are the ones submitted clearly, consistently, and with the right evidence. If you are planning for a 2026 intake, start your document preparation before the application season becomes urgent.`,
+  },
+  {
+    slug: "strong-scholarship-application-kenyan-students-2026",
+    title: "How Kenyan Students Can Build a Strong Scholarship Application in 2026",
+    excerpt:
+      "Scholarships are competitive, but Kenyan students can stand out with a clear story, strong evidence, early deadlines, and applications matched to each funder's goals.",
+    category: "Scholarships",
+    readTime: "8 min read",
+    date: "June 18, 2026",
+    image: "/images/blogs/scholarship-application-kenyan-students.png",
+    imageAlt: "Kenyan student reviewing scholarship application materials with a mentor",
+    content: `Winning a scholarship is not only about having good grades. Strong scholarship applications show academic ability, leadership, financial readiness, personal direction, and a clear reason why the opportunity fits your future.
+
+For Kenyan students, the best strategy is to treat scholarships like a serious project. You need a shortlist, deadlines, documents, essays, referees, and enough time to revise your application before submitting.
+
+## 1. Choose Scholarships That Match Your Profile
+
+Do not apply everywhere blindly. Start by matching opportunities to your level of study, subject area, destination, leadership experience, and long-term goals.
+
+Some scholarships are built around leadership and public impact. Chevening, for example, describes itself as the UK Government's international scholarships programme for future leaders. DAAD Kenya provides a searchable funding database for students, graduates, PhD students, researchers, and lecturers. Other awards may focus on specific countries, fields, universities, or regions.
+
+The closer your profile fits the scholarship's purpose, the stronger your application becomes.
+
+## 2. Build a Scholarship Calendar
+
+Many scholarships open and close months before the actual intake. Waiting until you have a university offer can make you miss funding deadlines.
+
+Your calendar should track:
+
+- Opening date
+- Closing date
+- Eligible courses
+- Required documents
+- Referee deadline
+- Interview period
+- Final decision timeline
+
+Set reminders at least one month before each deadline. Competitive applications need editing time.
+
+## 3. Prepare a Clear Personal Story
+
+Scholarship panels read many applications. A strong personal story helps them understand who you are, what you have done, and why the award matters.
+
+Your story should connect:
+
+- Your background
+- Your academic interests
+- Your leadership or service experience
+- The problem you want to solve
+- Why the course or country fits that goal
+- How Kenya or your community benefits from your growth
+
+Avoid writing only about wanting a better life. That may be true, but scholarship committees usually want to see direction, contribution, and evidence of potential.
+
+## 4. Gather Evidence Before Writing Essays
+
+Before drafting essays, list your strongest proof points. These may include academic awards, school leadership, volunteering, business projects, community work, internships, research, church or youth leadership, sports leadership, or family responsibilities.
+
+Evidence makes your application believable. Instead of saying "I am a leader," show when you led, who was involved, what changed, and what you learned.
+
+## 5. Choose Referees Carefully
+
+A strong reference letter can support your application, but only if the referee knows you well. Choose teachers, lecturers, supervisors, mentors, or employers who can describe your character and achievements with specific examples.
+
+Give referees enough time and share your CV, course choice, scholarship goals, and essay themes. A rushed reference is often too general.
+
+## 6. Tailor Every Application
+
+Do not copy the same essay into every scholarship portal. Each scholarship has its own priorities. Some value leadership, others research, development impact, academic excellence, financial need, or return contribution.
+
+Before writing, read the scholarship's official guidance and note the language it uses. Then shape your examples around that specific opportunity without pretending to be someone you are not.
+
+## 7. Show Financial Awareness
+
+Even fully funded scholarships may not cover every possible cost. Some awards cover tuition, living allowance, flights, insurance, visa costs, or research costs, while others are partial.
+
+Read the funding details carefully and prepare a realistic budget. If the award is partial, explain how the remaining costs will be covered. This shows maturity and reduces doubt about whether you can complete the course.
+
+## 8. Review Before Submission
+
+Before submitting, check for:
+
+- Unanswered questions
+- Weak or vague examples
+- Spelling mistakes
+- Wrong scholarship name
+- Missing documents
+- Files uploaded in the wrong section
+- Essays that exceed word limits
+
+Ask someone else to read your application. A fresh reader can spot unclear sections you may miss.
+
+## Final Thoughts
+
+A scholarship application is your chance to show readiness, not desperation. Start early, choose opportunities carefully, write with evidence, and make every part of the application point toward a clear academic and career goal.`,
+  },
+  {
     slug: "scholarships-for-kenyan-students",
     title: "Scholarships for Kenyan Students 2026",
     excerpt:
@@ -282,6 +526,8 @@ This is important because your visa is not just for studying—it can also shape
     category: "Scholarships",
     readTime: "9 min read",
     date: "March 20, 2026",
+    image: "/images/blogs/scholarships-kenyan-students-2026.png",
+    imageAlt: "Kenyan student reviewing scholarship funding documents at a bright study desk",
     content: `Studying abroad can be expensive, but scholarships make it possible—even without a strong financial background. In 2026, there are many opportunities available specifically for Kenyan students, ranging from fully funded programs to partial funding. Understanding how these scholarships work is the key to taking advantage of them.
 
 ## 1. Understand the Types of Scholarships Available

@@ -550,6 +550,98 @@ export const destinationDetails: Record<string, DestinationDetail> = {
       'Spain offers affordability, rich culture and EU-linked education, but it is not usually the strongest option for students whose top priority is immediate high-paying work after graduation.',
     ],
   },
+  germany: {
+    tuitionRange: 'KSh 0 - 2.25M per year',
+    annualLivingBudget: 'KSh 1.62M - 2.16M per year',
+    workWhileStudying:
+      'International students in Germany may work up to 140 full days or 280 half days per year. Some university assistant roles may have different limits, depending on the arrangement and local rules.',
+    postStudyPathway:
+      'After graduation, international students can apply for an 18-month residence permit to search for employment related to their field of study, with possible routes into longer-term permits such as the EU Blue Card after securing qualified work.',
+    heroImage: '/images/destinations/germany-1.jpg',
+    heroImageAlt: 'Historic university building in Germany',
+    galleryImages: [
+      {
+        src: '/images/destinations/germany-1.jpg',
+        alt: 'Humboldt University square and academic building in Berlin',
+      },
+      {
+        src: '/images/destinations/germany-2.jpg',
+        alt: 'Historic university statue and campus facade in Germany',
+      },
+      {
+        src: '/images/destinations/germany-3.jpg',
+        alt: 'German university campus courtyard from above',
+      },
+      {
+        src: '/images/destinations/germany-4.jpg',
+        alt: 'Humboldt University facade in Berlin',
+      },
+    ],
+    exploreRegions: ['Berlin', 'Munich', 'Hamburg', 'Aachen', 'Heidelberg'],
+    applicationSteps: [
+      'Choose your university type, program and language of instruction.',
+      'Check whether your academic qualifications meet the program entry requirements.',
+      'Prepare transcripts, passport, CV, motivation letter, references and language evidence.',
+      'Apply directly to the university or through Uni-Assist where required.',
+      'Secure admission, arrange blocked-account proof, health insurance and apply for the German student visa.',
+    ],
+    heroGradient: 'bg-[linear-gradient(135deg,#111827_0%,#374151_45%,#b45309_100%)]',
+    softAccent: 'bg-[#fff4df]',
+    accentText: 'text-[#b45309]',
+    accentBg: 'bg-[#b45309]',
+    facts: ['Low public-university tuition', 'Strong technical economy', '18-month post-study job search route'],
+    popularCourses: ['Engineering', 'Computer Science', 'Data Science', 'Business', 'Healthcare'],
+    overviewParagraphs: [
+      'Germany is one of Europe\'s leading destinations for international students, attracting more than 400,000 learners from around the world. It is known for high-quality education, strong research institutions, affordable public universities and excellent employment opportunities.',
+      'The country has a population of about 84 million, uses the Euro, and runs its academic year across the winter semester from October to March and the summer semester from April to September. Berlin is the capital, while major student and industry hubs include Munich, Hamburg, Aachen and Heidelberg.',
+      'Germany offers more than 2,000 English-taught programs, especially at master\'s level. Public universities are often tuition-free regardless of nationality, although students still need to budget for semester contributions, living expenses, health insurance and visa preparation.',
+    ],
+    institutionGuide: [
+      {
+        name: 'Technical University of Munich',
+        summary:
+          'Technical University of Munich is one of Germany\'s strongest technical institutions, with excellent reputation in computer science, mechanical engineering, data science and applied research. Its location in Munich connects students to major employers in technology, engineering and manufacturing.',
+        bestFor: 'Students targeting engineering, computer science, data science and high-level technical careers.',
+        costPosition: 'Academic value is very strong, though Munich has higher living costs than many German cities.',
+      },
+      {
+        name: 'RWTH Aachen University',
+        summary:
+          'RWTH Aachen is internationally known for engineering, artificial intelligence, robotics and applied technology. It has a strong industry orientation and is especially attractive to students who want a technical education connected to real industrial demand.',
+        bestFor: 'Students interested in engineering, robotics, AI, manufacturing and applied technical fields.',
+        costPosition: 'Often strong value because Aachen can be more affordable than Munich or Berlin.',
+      },
+      {
+        name: 'Heidelberg University',
+        summary:
+          'Heidelberg University is one of Germany\'s oldest and most respected research universities, with particular strength in medicine, biology, physics and research-led academic pathways. The city has a strong historic student identity.',
+        bestFor: 'Students aiming for medicine, life sciences, physics and research-focused study.',
+        costPosition: 'Strong public-university value with costs mainly driven by living expenses.',
+      },
+      {
+        name: 'Humboldt University of Berlin',
+        summary:
+          'Humboldt University of Berlin is a historic research university in the capital, known for social sciences, economics, humanities and broad academic prestige. Studying in Berlin also gives students access to an international community and a growing startup ecosystem.',
+        bestFor: 'Students seeking social sciences, economics, humanities and an international capital-city experience.',
+        costPosition: 'Public-university tuition can be low, but Berlin housing costs require careful planning.',
+      },
+      {
+        name: 'Karlsruhe Institute of Technology',
+        summary:
+          'Karlsruhe Institute of Technology is especially respected in information technology, engineering and energy systems. Its technical profile makes it attractive for students planning careers in software, infrastructure, renewable energy and applied sciences.',
+        bestFor: 'Students targeting IT, engineering, energy systems and innovation-led technical careers.',
+        costPosition: 'Strong academic value, with total cost depending mainly on living arrangements and semester fees.',
+      },
+    ],
+    realityCheck: [
+      'Most public universities charge no tuition fees, but students still pay semester contributions of about EUR 150 to 350 and must cover living costs. Private universities can cost around EUR 7,000 to 15,000 per year.',
+      'Kenyan students need a German national student visa. Common requirements include a valid passport, admission letter, academic certificates, health insurance, visa application form, passport photos, accommodation proof and financial proof.',
+      'Financial proof is commonly shown through a blocked account containing about EUR 11,904 for one year, roughly KSh 1.75M to 1.8M depending on exchange rates. Visa processing can take 6 to 12 weeks.',
+      'Bachelor\'s applicants usually need a secondary school certificate equivalent to the German Abitur, transcripts, passport, motivation letter, CV and language proof. Master\'s applicants usually need a related bachelor\'s degree, transcripts, CV, statement of purpose, references and English proof.',
+      'English-taught programs are available, especially at master\'s level, but German language skills still improve daily life, internships, part-time work and graduate job prospects.',
+      'DAAD scholarships are among the best-known funding options and may support students through stipends, insurance and travel support depending on the program.',
+    ],
+  },
   'new-zealand': {
     tuitionRange: 'KSh 1.4M - 2.7M per year',
     annualLivingBudget: 'KSh 675K - 1.1M per year',

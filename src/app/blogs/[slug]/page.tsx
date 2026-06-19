@@ -115,12 +115,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </p>
                 <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                   <Link
-                    href="/contact-us"
-                    className="inline-flex w-full items-center justify-center rounded-full bg-[#4f8ff0] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1f62e4] sm:w-auto"
-                  >
-                    Start your Journey
-                  </Link>
-                  <Link
                     href="/blogs"
                     className="inline-flex w-full items-center justify-center rounded-full border border-[#cddbf7] bg-white px-5 py-2.5 text-sm font-semibold text-[#1f62e4] transition hover:bg-[#f4f8fb] sm:w-auto"
                   >

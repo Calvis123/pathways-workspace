@@ -91,7 +91,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const destinationLabel = getDestinationLabel(country.name);
   const title = `Study in ${destinationLabel} for Kenyan Students | Barak Pathways`;
-  const description = `Discover why ${country.name} is a strong study destination for Kenyan students. Explore universities, entry requirements and application support with Barak Pathways.`;
+  const description = `Discover why ${country.name} is a strong study destination for Kenyan students. Explore universities, entry requirements, costs, work options and visa planning.`;
 
   return {
     title,
@@ -136,7 +136,7 @@ export default async function DestinationPage({ params }: PageProps) {
     },
     {
       question: `How should I plan for studying in ${destinationLabel}?`,
-      answer: `Start with your preferred course, intake, and destination priorities. We then help you structure your documents and next steps in a practical timeline.`,
+      answer: `Start with your preferred course, intake, budget and career goal. Then compare entry requirements, language expectations, application deadlines, funding proof and visa timelines before choosing your final shortlist.`,
     },
     ...faqs.slice(0, 2),
   ];
@@ -308,10 +308,10 @@ export default async function DestinationPage({ params }: PageProps) {
                 Planning to study in {destinationLabel}? Start here.
               </h2>
               <p className="mt-4 text-base leading-8 text-slate-600">
-                This page is structured to help you think like an advisor would: first determine whether the destination fits your goals, then compare institutions, requirements, costs and longer-term opportunities.
+                This page is structured to help you compare the destination properly: first check whether it fits your goals, then review institutions, requirements, costs, work options and longer-term opportunities.
               </p>
               <p className="mt-4 text-base leading-8 text-slate-600">
-                Barak Pathways can help you move from broad interest to a realistic shortlist, stronger documents and a clearer application plan.
+                Use it as a starting point for deciding whether the destination makes sense academically, financially and professionally before you begin applications.
               </p>
 
               <div className="mt-8 rounded-[28px] border border-[#e2e9f5] bg-slate-950 p-6 text-white shadow-[0_20px_50px_rgba(2,6,23,0.24)]">
@@ -464,7 +464,7 @@ export default async function DestinationPage({ params }: PageProps) {
               <div className="grid grid-cols-[1.2fr_0.8fr_1fr] gap-4 border-b border-[#e3eaf5] bg-[linear-gradient(180deg,#f4f8fb_0%,#eef5f9_100%)] px-6 py-4 text-sm font-semibold text-slate-700">
                 <div>University</div>
                 <div>Popular interest</div>
-                <div>How Barak can help</div>
+                <div>What to prepare</div>
               </div>
 
               {country.universities.map((university, index) => (
@@ -480,7 +480,7 @@ export default async function DestinationPage({ params }: PageProps) {
                     {getUniversityFocus(detail.popularCourses, index)}
                   </div>
                   <div className="text-sm leading-6 text-slate-600">
-                    Entry guidance, course matching and application direction.
+                    Course fit, document readiness and a realistic application timeline.
                   </div>
                 </div>
               ))}
@@ -539,7 +539,7 @@ export default async function DestinationPage({ params }: PageProps) {
                     </div>
                     <h3 className="mt-5 text-xl font-semibold text-slate-900">{region}</h3>
                     <p className="mt-3 text-sm leading-6 text-slate-600">
-                      Ask Barak Pathways how universities, cost and student life compare in {region}.
+                      Compare university options, accommodation costs, transport access, part-time work prospects and the general student lifestyle in {region}.
                     </p>
                   </article>
                 ))}
@@ -573,10 +573,10 @@ export default async function DestinationPage({ params }: PageProps) {
                   </div>
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                      Barak support
+                      Preparation focus
                     </div>
                     <p className="mt-2 text-sm leading-6 text-slate-600">
-                      We help you confirm entry requirements, organise documents and prepare the final visa stage with more confidence.
+                      Confirm entry requirements, organise documents early and prepare the visa stage with enough time for corrections.
                     </p>
                   </div>
                 </div>
@@ -593,7 +593,7 @@ export default async function DestinationPage({ params }: PageProps) {
                     <div>
                       <div className="text-base font-semibold text-slate-900">{item}</div>
                       <p className="mt-1 text-sm leading-6 text-slate-600">
-                        Barak Pathways can help you confirm how this applies to your chosen university, intake and final visa preparation.
+                        Check how this applies to your chosen university, intake, course level and final visa preparation.
                       </p>
                     </div>
                   </div>
@@ -615,7 +615,7 @@ export default async function DestinationPage({ params }: PageProps) {
                           <div>
                             <div className="text-base font-semibold text-slate-900">{item}</div>
                             <p className="mt-1 text-sm leading-6 text-slate-600">
-                              Barak Pathways can help you confirm how this applies to your chosen university, intake and final visa preparation.
+                              Check how this applies to your chosen university, intake, course level and final visa preparation.
                             </p>
                           </div>
                         </div>
@@ -650,10 +650,10 @@ export default async function DestinationPage({ params }: PageProps) {
                 </div>
                 <div className="mt-4 rounded-3xl border border-[#cfe9d6] bg-[#edf8f2] p-6">
                   <div className="text-sm font-medium text-slate-500">Application strategy</div>
-                  <div className="mt-2 text-2xl font-semibold text-slate-950">Clear next steps with advisor support</div>
+                  <div className="mt-2 text-2xl font-semibold text-slate-950">Clear next steps with a document plan</div>
                 </div>
                 <p className="mt-5 text-sm leading-7 text-slate-600">
-                  We help you organise priorities, shortlist suitable options, and move through each stage with less confusion and better momentum.
+                  Organise your priorities, shortlist suitable options, and move through each stage with a clear view of deadlines, requirements and budget.
                 </p>
               </div>
 
@@ -675,7 +675,7 @@ export default async function DestinationPage({ params }: PageProps) {
                   {[
                     { name: 'Program shortlist', status: 'In progress', deadline: 'Early stage' },
                     { name: 'Documents prepared', status: 'Required', deadline: 'Before submission' },
-                    { name: 'Application review', status: 'Advisor-led', deadline: 'Before deadlines' },
+                    { name: 'Application review', status: 'Recommended', deadline: 'Before deadlines' },
                     { name: 'Visa checklist', status: 'Required', deadline: 'After admission' },
                   ].map((item) => (
                     <div
@@ -690,7 +690,7 @@ export default async function DestinationPage({ params }: PageProps) {
                 </div>
 
                 <div className="mt-5 text-sm leading-7 text-slate-600">
-                  Barak Pathways helps you keep these steps organised so your applications stay clear and on schedule.
+                  Keeping these steps organised helps your applications stay clear, complete and on schedule.
                 </div>
               </div>
             </div>
@@ -816,7 +816,7 @@ export default async function DestinationPage({ params }: PageProps) {
                     Next step
                   </div>
                   <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                    Build a realistic study plan for {country.name} with expert guidance.
+                    Build a realistic study plan for {country.name}.
                   </h2>
                   <p className="mt-4 text-base leading-8 text-white/80">
                     If this destination looks like a strong fit, the next move is narrowing your course options, confirming entry requirements and building a budget you can actually work with.

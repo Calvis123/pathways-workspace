@@ -281,25 +281,23 @@ export function RegistrationPopupTrigger({
               </div>
             ) : null}
 
-            <div className="shrink-0 overflow-hidden border-b border-[#d6e2f8] bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)]">
-              <div className="grid sm:min-h-60 sm:grid-cols-[1fr_285px]">
-                <div className="order-2 flex flex-col justify-center px-5 py-5 sm:order-1 sm:px-8 sm:py-6">
-                  <h3 className="text-xl font-semibold leading-tight text-white sm:text-3xl">
-                    Apply for your study abroad pathway.
-                  </h3>
-                  <p className="mt-2 max-w-2xl text-sm leading-7 text-[#eaf1ff] sm:text-base">
-                    Share your details, education background and preferred program so your application record is captured clearly.
-                  </p>
-                </div>
-                <div className="order-1 relative h-44 overflow-hidden bg-white/15 sm:order-2 sm:h-full">
-                  <Image
-                    src="/images/registration-hero.png"
-                    alt="Students reviewing international study application documents"
-                    fill
-                    sizes="(min-width: 640px) 285px, 96vw"
-                    className="object-cover"
-                  />
-                </div>
+            <div className="relative min-h-64 shrink-0 overflow-hidden border-b border-[#d6e2f8] sm:min-h-72">
+              <Image
+                src="/images/registration-hero.png"
+                alt="Students reviewing international study application documents"
+                fill
+                priority
+                sizes="(min-width: 768px) 768px, 96vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,76,207,0.94)_0%,rgba(31,98,228,0.84)_48%,rgba(31,98,228,0.35)_100%)]" />
+              <div className="relative z-10 flex min-h-64 max-w-2xl flex-col justify-center px-5 py-8 sm:min-h-72 sm:px-8 sm:py-10">
+                <h3 className="text-xl font-semibold leading-tight text-white sm:text-3xl">
+                  Apply for your study abroad pathway.
+                </h3>
+                <p className="mt-2 max-w-2xl text-sm leading-7 text-[#eaf1ff] sm:text-base">
+                  Share your details, education background and preferred program so your application record is captured clearly.
+                </p>
               </div>
             </div>
 

@@ -354,7 +354,7 @@ export function RegistrationPopupTrigger({
                   />
                 </Question>
 
-                <Question label="Phone number" required>
+                <Question label="Phone number (Whatsapp Number)" required>
                   <TextInput
                     value={form.phone}
                     onChange={(value) => setForm((current) => ({ ...current, phone: value }))}

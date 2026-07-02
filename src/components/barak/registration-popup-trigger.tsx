@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { X } from 'lucide-react';
 
@@ -13,63 +13,22 @@ type RegistrationPopupTriggerProps = {
   showButton?: boolean;
 };
 
-type EducationSystem = keyof typeof gradeSections;
-type FormStep = 'intro' | 'grade' | 'final';
-
 const initialForm = {
   firstName: '',
   lastName: '',
   email: '',
   phone: '',
   program: '',
-  educationSystem: '',
-  grade: '',
   highestEducation: '',
   message: '',
+  consent: false,
 };
 
 const programOptions = [
-  'Foundation Year Program',
-  "Bachelor's Program",
-  "Master's Program",
-  'German Language Program',
-  'Ausbildung',
+  'Diploma',
+  'Undergraduate',
+  'Postgraduate',
 ];
-
-const educationSystems = [
-  '8-4-4 System (KCSE)',
-  'CBC / Competency-Based Curriculum',
-  'Cambridge International / IGCSE',
-  'International Baccalaureate (IB)',
-];
-
-const gradeSections = {
-  '8-4-4 System (KCSE)': {
-    page: 2,
-    title: '8-4-4 SYSTEM (KCSE)',
-    grades: ['A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'E'],
-  },
-  'CBC / Competency-Based Curriculum': {
-    page: 3,
-    title: 'CBC / COMPETENCY-BASED CURRICULUM',
-    grades: [
-      'Exceeding Expectations (EE)',
-      'Meeting Expectations (ME)',
-      'Approaching Expectations (AE)',
-      'Below Expectations (BE)',
-    ],
-  },
-  'Cambridge International / IGCSE': {
-    page: 4,
-    title: 'CAMBRIDGE INTERNATIONAL / IGCSE',
-    grades: ['A*', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'U'],
-  },
-  'International Baccalaureate (IB)': {
-    page: 5,
-    title: 'INTERNATIONAL BACCALAUREATE (IB) SYSTEM',
-    grades: ['7', '6', '5', '4', '3', '2', '1'],
-  },
-};
 
 const educationLevels = [
   'High School',
@@ -80,12 +39,6 @@ const educationLevels = [
   'Other',
 ];
 
-function getCurrentStepNumber(step: FormStep, hasGradeStep: boolean) {
-  if (step === 'intro') return 1;
-  if (step === 'grade') return 2;
-  return hasGradeStep ? 3 : 2;
-}
-
 export function RegistrationPopupTrigger({
   label,
   className,
@@ -94,11 +47,11 @@ export function RegistrationPopupTrigger({
   showButton = true,
 }: RegistrationPopupTriggerProps) {
   const [internalOpen, setInternalOpen] = useState(false);
-  const [step, setStep] = useState<FormStep>('intro');
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formScrollRef = useRef<HTMLFormElement>(null);
   const open = controlledOpen ?? internalOpen;
 
   const setOpen = (nextOpen: boolean) => {
@@ -110,20 +63,12 @@ export function RegistrationPopupTrigger({
     setInternalOpen(nextOpen);
   };
 
-  const selectedGradeSection = isEducationSystem(form.educationSystem)
-    ? gradeSections[form.educationSystem]
-    : null;
-  const totalSteps = selectedGradeSection ? 3 : 2;
-  const currentStep = getCurrentStepNumber(step, Boolean(selectedGradeSection));
-  const progress = Math.round((currentStep / totalSteps) * 100);
-
   useEffect(() => {
     if (!success) return;
     const timer = setTimeout(() => {
       setOpen(false);
       setSuccess('');
       setError('');
-      setStep('intro');
       setForm(initialForm);
     }, 1200);
     return () => clearTimeout(timer);
@@ -144,7 +89,6 @@ export function RegistrationPopupTrigger({
 
   const clearForm = () => {
     setForm(initialForm);
-    setStep('intro');
     setError('');
     setSuccess('');
   };
@@ -157,9 +101,15 @@ export function RegistrationPopupTrigger({
     }
   };
 
-  const validateIntro = () => {
+  const validateForm = () => {
     if (!form.program || !form.firstName || !form.lastName || !form.email || !form.phone) {
-      setError('Please fill in program, first name, last name, email and phone number.');
+      setError('Please fill in program, first name, last name, email and WhatsApp number / alternative phone number.');
+      formScrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+      return false;
+    }
+
+    if (!form.consent) {
+      setError('Please confirm your consent before submitting.');
       return false;
     }
 
@@ -167,34 +117,10 @@ export function RegistrationPopupTrigger({
     return true;
   };
 
-  const goNext = () => {
-    if (step === 'intro') {
-      if (!validateIntro()) return;
-      setStep(selectedGradeSection ? 'grade' : 'final');
-      return;
-    }
+  const handleSubmit = async (event?: FormEvent<HTMLFormElement>) => {
+    event?.preventDefault();
 
-    if (step === 'grade') {
-      setStep('final');
-    }
-  };
-
-  const goBack = () => {
-    setError('');
-
-    if (step === 'final') {
-      setStep(selectedGradeSection ? 'grade' : 'intro');
-      return;
-    }
-
-    if (step === 'grade') {
-      setStep('intro');
-    }
-  };
-
-  const handleSubmit = async () => {
-    if (!validateIntro()) {
-      setStep('intro');
+    if (!validateForm()) {
       setSuccess('');
       return;
     }
@@ -217,10 +143,9 @@ export function RegistrationPopupTrigger({
           level: form.program,
           location: 'Kenya',
           notes: [
-            form.educationSystem ? `Education system: ${form.educationSystem}` : '',
-            form.grade ? `Grade attained: ${form.grade}` : '',
             form.highestEducation ? `Highest level of education: ${form.highestEducation}` : '',
             form.message ? `Message: ${form.message}` : '',
+            'Consent accepted: Yes',
           ]
             .filter(Boolean)
             .join('\n'),
@@ -239,7 +164,6 @@ export function RegistrationPopupTrigger({
 
       setSuccess('Application submitted successfully.');
       setForm(initialForm);
-      setStep('intro');
     } catch {
       setError('Network error. Please check your connection and try again.');
     } finally {
@@ -269,7 +193,7 @@ export function RegistrationPopupTrigger({
             role="dialog"
             aria-modal="true"
             aria-label="Study abroad application"
-            className="relative flex max-h-[92vh] w-[96vw] max-w-3xl flex-col overflow-hidden rounded-2xl border border-[#d8e4fb] bg-[linear-gradient(180deg,#f7fbff_0%,#eef5ff_100%)] p-0 shadow-[0_34px_100px_rgba(15,42,90,0.28)]"
+            className="relative flex max-h-[calc(100dvh-1.5rem)] w-[96vw] max-w-3xl flex-col overflow-hidden rounded-2xl border border-[#d8e4fb] bg-[linear-gradient(180deg,#f7fbff_0%,#eef5ff_100%)] p-0 shadow-[0_34px_100px_rgba(15,42,90,0.28)] sm:max-h-[calc(100dvh-3rem)]"
           >
             <button
               type="button"
@@ -286,7 +210,7 @@ export function RegistrationPopupTrigger({
               </div>
             ) : null}
 
-            <div className="relative min-h-64 shrink-0 overflow-hidden border-b border-[#d6e2f8] sm:min-h-72">
+            <div className="relative min-h-52 shrink-0 overflow-hidden border-b border-[#d6e2f8] sm:min-h-64">
               <Image
                 src="/images/registration-hero.png"
                 alt="Students reviewing international study application documents"
@@ -296,21 +220,21 @@ export function RegistrationPopupTrigger({
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,76,207,0.94)_0%,rgba(31,98,228,0.84)_48%,rgba(31,98,228,0.35)_100%)]" />
-              <div className="relative z-10 flex min-h-64 max-w-2xl flex-col justify-center px-5 py-8 sm:min-h-72 sm:px-8 sm:py-10">
+              <div className="relative z-10 flex min-h-52 max-w-2xl flex-col justify-center px-5 py-7 sm:min-h-64 sm:px-8 sm:py-10">
                 <h3 className="text-xl font-semibold leading-tight text-white sm:text-3xl">
-                  Apply for your study abroad pathway.
+                  Submit your study abroad pathway form.
                 </h3>
                 <p className="mt-2 max-w-2xl text-sm leading-7 text-[#eaf1ff] sm:text-base">
-                  Share your details, education background and preferred program so your application record is captured clearly.
+                  Share your details, education background and preferred program so your application record is captured clearly. A representative will be connected to you as soon as possible.
                 </p>
               </div>
             </div>
 
-          <form
-            onSubmit={(event: FormEvent<HTMLFormElement>) => event.preventDefault()}
-            className="grid min-h-0 gap-4 overflow-y-auto p-4 sm:p-8 [scrollbar-gutter:stable] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9eb8e8] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-2"
-          >
-            {step === 'intro' ? (
+            <form
+              ref={formScrollRef}
+              onSubmit={handleSubmit}
+              className="grid min-h-0 flex-1 content-start gap-4 overflow-y-auto overscroll-contain p-4 sm:p-8 [scrollbar-gutter:stable] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#9eb8e8] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-2"
+            >
               <div className="grid gap-4 rounded-3xl border border-[#d7e3f8] bg-[linear-gradient(180deg,#f8fbff_0%,#f2f7ff_74%,#fff9e9_100%)] p-5 shadow-[0_18px_46px_rgba(19,60,125,0.12)] sm:p-6">
                 <Question label="Program you want to apply for" required>
                   <select
@@ -328,21 +252,21 @@ export function RegistrationPopupTrigger({
                 </Question>
 
                 <div className="grid gap-4 sm:grid-cols-2">
-                <Question label="First name" required>
-                  <TextInput
-                    value={form.firstName}
-                    onChange={(value) => setForm((current) => ({ ...current, firstName: value }))}
-                    placeholder="e.g. Brian"
-                  />
-                </Question>
+                  <Question label="First name" required>
+                    <TextInput
+                      value={form.firstName}
+                      onChange={(value) => setForm((current) => ({ ...current, firstName: value }))}
+                      placeholder="e.g. Brian"
+                    />
+                  </Question>
 
-                <Question label="Last name" required>
-                  <TextInput
-                    value={form.lastName}
-                    onChange={(value) => setForm((current) => ({ ...current, lastName: value }))}
-                    placeholder="e.g. Otieno"
-                  />
-                </Question>
+                  <Question label="Last name" required>
+                    <TextInput
+                      value={form.lastName}
+                      onChange={(value) => setForm((current) => ({ ...current, lastName: value }))}
+                      placeholder="e.g. Otieno"
+                    />
+                  </Question>
                 </div>
 
                 <Question label="Email address" required>
@@ -354,7 +278,7 @@ export function RegistrationPopupTrigger({
                   />
                 </Question>
 
-                <Question label="Phone number (Whatsapp Number)" required>
+                <Question label="WhatsApp number / alternative phone number" required>
                   <TextInput
                     value={form.phone}
                     onChange={(value) => setForm((current) => ({ ...current, phone: value }))}
@@ -362,64 +286,20 @@ export function RegistrationPopupTrigger({
                   />
                 </Question>
 
-                <Question label="Education system" helper="Select this only if you already know the system your certificate follows.">
+                <Question label="Highest level of education">
                   <select
-                    value={form.educationSystem}
-                    onChange={(event) =>
-                      setForm((current) => ({ ...current, educationSystem: event.target.value, grade: '' }))
-                    }
+                    value={form.highestEducation}
+                    onChange={(event) => setForm((current) => ({ ...current, highestEducation: event.target.value }))}
                     className="h-12 w-full rounded-xl border border-[#c9d8f3] bg-[#f9fbff] px-4 text-[#0f254b] outline-none transition focus:border-[#1f62e4] focus:ring-2 focus:ring-[#1f62e4]/20"
                   >
-                    <option value="">Select if applicable...</option>
-                    {educationSystems.map((option) => (
+                    <option value="">Select level...</option>
+                    {educationLevels.map((option) => (
                       <option key={option} value={option}>
                         {option}
                       </option>
                     ))}
                   </select>
                 </Question>
-              </div>
-            ) : null}
-
-            {step === 'grade' && selectedGradeSection ? (
-              <SectionCard title={selectedGradeSection.title}>
-                <fieldset>
-                  <legend className="mb-6 text-lg font-semibold text-[#0f254b]">Select your grade attained</legend>
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {selectedGradeSection.grades.map((grade) => (
-                      <label key={grade} className="flex cursor-pointer items-center gap-4 rounded-xl border border-[#d7e3f8] bg-[#f9fbff] px-4 py-3 text-base font-medium text-[#0f254b] transition hover:border-[#1f62e4]">
-                        <input
-                          type="checkbox"
-                          checked={form.grade === grade}
-                          onChange={() => setForm((current) => ({ ...current, grade: current.grade === grade ? '' : grade }))}
-                          className="h-5 w-5 appearance-none rounded border-2 border-[#7d92bc] bg-white transition checked:border-[#1f62e4] checked:bg-[#1f62e4]"
-                        />
-                        <span>{grade}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-              </SectionCard>
-            ) : null}
-
-            {step === 'final' ? (
-              <div className="grid gap-4 rounded-3xl border border-[#d7e3f8] bg-[linear-gradient(180deg,#f8fbff_0%,#f2f7ff_74%,#fff9e9_100%)] p-5 shadow-[0_18px_46px_rgba(19,60,125,0.12)] sm:p-6">
-                <SectionCard title="FINAL">
-                  <Question label="Highest level of education" nested>
-                    <select
-                      value={form.highestEducation}
-                      onChange={(event) => setForm((current) => ({ ...current, highestEducation: event.target.value }))}
-                      className="h-12 w-full rounded-xl border border-[#c9d8f3] bg-[#f9fbff] px-4 text-[#0f254b] outline-none transition focus:border-[#1f62e4] focus:ring-2 focus:ring-[#1f62e4]/20"
-                    >
-                      <option value="">Select level...</option>
-                      {educationLevels.map((option) => (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
-                  </Question>
-                </SectionCard>
 
                 <Question label="Anything else we should know?">
                   <textarea
@@ -429,8 +309,20 @@ export function RegistrationPopupTrigger({
                     className="min-h-24 w-full resize-y rounded-xl border border-[#c9d8f3] bg-[#f9fbff] px-4 py-3 text-[#0f254b] placeholder:text-[#7d92bc] outline-none transition focus:border-[#1f62e4] focus:ring-2 focus:ring-[#1f62e4]/20"
                   />
                 </Question>
+
+                <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-[#d7e3f8] bg-white/82 px-5 py-4 text-sm leading-6 text-[#0f254b] shadow-[0_10px_26px_rgba(19,60,125,0.08)]">
+                  <input
+                    type="checkbox"
+                    checked={form.consent}
+                    onChange={(event) => setForm((current) => ({ ...current, consent: event.target.checked }))}
+                    className="mt-1 h-5 w-5 shrink-0 rounded border-2 border-[#7d92bc] text-[#1f62e4] focus:ring-[#1f62e4]/20"
+                  />
+                  <span>
+                    I consent to Barak Pathways contacting me about my study abroad registration and related support.
+                    <span className="text-[#d93025]"> *</span>
+                  </span>
+                </label>
               </div>
-            ) : null}
 
             {error ? (
               <p className="rounded-[8px] border border-[#fad2cf] bg-white px-4 py-3 text-sm text-[#d93025]">
@@ -445,42 +337,13 @@ export function RegistrationPopupTrigger({
 
             <div className="flex flex-wrap items-center justify-between gap-4 py-2">
               <div className="flex gap-3">
-                {step !== 'intro' ? (
-                  <button
-                    type="button"
-                    onClick={goBack}
-                    className="inline-flex h-11 min-w-24 items-center justify-center rounded-xl border border-[#c9d8f3] bg-white px-6 text-base font-semibold text-[#1f62e4] shadow-sm transition hover:bg-[#eef5ff]"
-                  >
-                    Back
-                  </button>
-                ) : null}
-                {step !== 'final' ? (
-                  <button
-                    type="button"
-                    onClick={goNext}
-                    className="inline-flex h-11 min-w-24 items-center justify-center rounded-xl bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] px-6 text-base font-semibold text-white shadow-[0_14px_30px_rgba(31,98,228,0.28)] transition hover:-translate-y-0.5"
-                  >
-                    Next
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={handleSubmit}
-                    disabled={isSubmitting}
-                    className="inline-flex h-11 min-w-32 items-center justify-center rounded-xl bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] px-6 text-base font-semibold text-white shadow-[0_14px_30px_rgba(31,98,228,0.35)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-65 disabled:hover:translate-y-0"
-                  >
-                    {isSubmitting ? 'Submitting...' : 'Apply Now'}
-                  </button>
-                )}
-              </div>
-              <div className="flex min-w-52 flex-1 items-center gap-4">
-                <div className="h-2 flex-1 overflow-hidden rounded-full bg-[#cad8f2]">
-                  <div
-                    className="h-full rounded-full bg-[#1f62e4]"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-                <span className="whitespace-nowrap text-sm font-medium text-[#426291]">Step {currentStep} of {totalSteps}</span>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex h-11 min-w-32 items-center justify-center rounded-xl bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] px-6 text-base font-semibold text-white shadow-[0_14px_30px_rgba(31,98,228,0.35)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-65 disabled:hover:translate-y-0"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                </button>
               </div>
               <button
                 type="button"
@@ -490,7 +353,7 @@ export function RegistrationPopupTrigger({
                 Clear
               </button>
             </div>
-          </form>
+            </form>
           </div>
         </div>
       ) : null}
@@ -502,40 +365,21 @@ function Question({
   label,
   helper,
   required,
-  nested,
   children,
 }: {
   label: string;
   helper?: string;
   required?: boolean;
-  nested?: boolean;
   children: ReactNode;
 }) {
   return (
-    <div
-      className={
-        nested
-          ? ''
-          : 'rounded-2xl border border-[#d7e3f8] bg-white/82 px-5 py-4 shadow-[0_10px_26px_rgba(19,60,125,0.08)]'
-      }
-    >
+    <div className="rounded-2xl border border-[#d7e3f8] bg-white/82 px-5 py-4 shadow-[0_10px_26px_rgba(19,60,125,0.08)]">
       <label className="block text-sm font-semibold text-[#0f254b]">
         {label} {required ? <span className="text-[#d93025]">*</span> : null}
       </label>
       {helper ? <p className="mt-1 text-xs leading-5 text-[#6b84ad]">{helper}</p> : null}
       <div className="mt-3">{children}</div>
     </div>
-  );
-}
-
-function SectionCard({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <section className="overflow-hidden rounded-3xl border border-[#d7e3f8] bg-white shadow-[0_18px_46px_rgba(19,60,125,0.12)]">
-      <div className="border-b border-[#d6e2f8] bg-[linear-gradient(120deg,#0f4ccf_0%,#1f62e4_55%,#4f8ff0_100%)] px-6 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-white">
-        {title}
-      </div>
-      <div className="px-5 py-6 sm:px-6">{children}</div>
-    </section>
   );
 }
 
@@ -559,8 +403,4 @@ function TextInput({
       className="h-12 w-full rounded-xl border border-[#c9d8f3] bg-[#f9fbff] px-4 text-[#0f254b] placeholder:text-[#7d92bc] outline-none transition focus:border-[#1f62e4] focus:ring-2 focus:ring-[#1f62e4]/20"
     />
   );
-}
-
-function isEducationSystem(value: string): value is EducationSystem {
-  return value in gradeSections;
 }

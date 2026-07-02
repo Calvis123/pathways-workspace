@@ -46,6 +46,9 @@ function normalizeProgramLevel(level: string) {
   const value = level.trim().toLowerCase();
   const map: Record<string, string> = {
     'foundation year program': 'certificate',
+    diploma: 'diploma',
+    undergraduate: 'undergraduate',
+    postgraduate: 'postgraduate',
     "bachelor's program": 'undergraduate',
     'bachelors program': 'undergraduate',
     "master's program": 'masters',
